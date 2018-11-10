@@ -1,0 +1,32 @@
+<resources>
+    <string name="app_name">Du lịch Việt Nam</string>
+    <string name="navigation_drawer_open">Open navigation drawer</string>
+    <string name="navigation_drawer_close">Close navigation drawer</string>
+    <string name="nav_header_title">Android Studio</string>
+    <string name="nav_header_subtitle">android.studio@android.com</string>
+    <string name="nav_header_desc">Navigation header</string>
+    <string name="action_settings">Settings</string>
+
+    <string name="next">NEXT</string>
+    <string name="skip">SKIP</string>
+
+    <string name="slide1_tile">Du lịch miền bắc</string>
+    <string name="slide2_tile"> Du lịch miền trung</string>
+    <string name="slide3_tile"> Du lịch miền nam</string>
+
+    <string name="slide1_desc">
+        Các tiểu vùng thuộc Bắc Bộ
+        Bắc Bộ là một trong 3 vùng lãnh thổ chính (gồm Bắc Bộ, Trung Bộ và Nam Bộ) của Việt Nam. Bắc Bộ cùng với một phần của Bắc Trung Bộ thuộc địa danh Miền Bắc Việt Nam. Bắc Bộ trong lịch sử trải qua nhiều tên gọi, thời kỳ Trịnh-Nguyễ.</string>
+    <string name="slide2_desc">Miền Trung Việt Nam còn gọi là Trung Bộ, nằm ở phần giữa lãnh thổ và là một trong ba vùng chính (gồm Bắc Bộ, Trung Bộ và Nam Bộ) của Việt Nam. Lịch sử Trung Bộ được gọi bằng các tên khác nhau như Trung Kỳ (thời thuộc Pháp), An Nam (theo các.</string>
+    <string name="slide3_desc">Miền Nam Việt Nam là một khái niệm để chỉ vùng địa lý ở phía nam nước Việt Nam. Tuy nhiên, tùy theo thời điểm lịch sử và thói quen sử dụng mà khái niệm này đôi khi được dùng để chỉ các vùng lãnh thổ khác nhau theo nghĩa chính trị một cách không chính thức.
+
+</string>
+    <string name="title_activity_mota_dichvu_tab">mota_dichvu_tab</string>
+    <string name="section_format">Hello World from section: %1$d</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="title_activity_tab__dich_vu__thong_tin">tab_DichVu_ThongTin</string>
+
+
+</resources>

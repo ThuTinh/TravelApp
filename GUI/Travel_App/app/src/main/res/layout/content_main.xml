@@ -1,0 +1,223 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    app:layout_behavior="@string/appbar_scrolling_view_behavior"
+    tools:context=".MainActivity"
+    tools:showIn="@layout/app_bar_main"
+    android:background="#fbf9af">
+  <LinearLayout
+      android:layout_width="match_parent"
+      android:layout_height="match_parent"
+      android:orientation="vertical"
+      >
+      <FrameLayout
+          android:layout_width="match_parent"
+          android:layout_weight="1"
+          android:layout_height="match_parent"
+
+          >
+          <ViewFlipper
+              android:layout_width="match_parent"
+              android:layout_height="match_parent"
+              android:id="@+id/flip1"
+
+              >
+              <ImageView
+                    android:id="@+id/img_mb1"
+                  android:layout_width="match_parent"
+                  android:layout_height="match_parent"
+                  android:scaleType="fitXY"
+                  android:src="@drawable/mienbac"
+
+                  />
+              <ImageView
+                  android:id="@+id/img_mb2"
+
+                  android:layout_width="match_parent"
+                  android:layout_height="match_parent"
+                  android:scaleType="fitXY"
+                  android:src="@drawable/img_mienbac1"
+
+                  />
+              <ImageView
+                  android:id="@+id/img_mb3"
+                  android:layout_width="match_parent"
+                  android:layout_height="match_parent"
+                  android:scaleType="fitXY"
+                  android:src="@drawable/img_mienbac2"
+
+                  />
+
+
+
+          </ViewFlipper>
+          <LinearLayout
+              android:layout_width="wrap_content"
+              android:layout_height="100dp"
+              android:layout_gravity="center"
+              >
+              <Button
+                  android:id="@+id/btnMienBac"
+                  android:layout_width="wrap_content"
+                  android:layout_height="wrap_content"
+                  android:background="@android:color/transparent"
+                  android:text="Du lịch miền bắc"
+                  android:textSize="20dp"
+                  android:layout_gravity="center|bottom"
+                  android:textColor="#FFFF00"
+                  />
+              <ImageView
+                  android:layout_width="wrap_content"
+                  android:layout_height="wrap_content"
+                  android:src="@drawable/arr2"
+                  android:id="@+id/arr1"
+                  android:layout_gravity="clip_horizontal"
+                  android:paddingTop="12dp"
+                  />
+
+          </LinearLayout>
+      </FrameLayout>
+      <FrameLayout
+          android:layout_width="match_parent"
+          android:layout_height="match_parent"
+          android:layout_weight="1"
+          >
+          <ViewFlipper
+              android:layout_width="match_parent"
+              android:layout_height="match_parent"
+              android:id="@+id/flip2"
+              >
+              <ImageView
+                  android:id="@+id/img_mt1"
+                  android:layout_width="match_parent"
+                  android:layout_height="match_parent"
+                  android:scaleType="fitXY"
+                  android:src="@drawable/mientrung"
+
+                  />
+              <ImageView
+                  android:id="@+id/img_mt2"
+
+                  android:layout_width="match_parent"
+                  android:layout_height="match_parent"
+                  android:scaleType="fitXY"
+                  android:src="@drawable/img_miengtrung1"
+
+                  />
+              <ImageView
+                  android:id="@+id/img_mt3"
+                  android:layout_width="match_parent"
+                  android:layout_height="match_parent"
+                  android:scaleType="fitXY"
+                  android:src="@drawable/img_mientrung2"
+
+                  />
+
+
+          </ViewFlipper>
+          <LinearLayout
+              android:layout_width="wrap_content"
+              android:layout_height="100dp"
+              android:layout_gravity="center|bottom"
+              >
+
+              <Button
+                  android:id="@+id/btnMienTrung"
+                  android:layout_width="wrap_content"
+                  android:layout_height="wrap_content"
+                  android:layout_gravity="center_horizontal"
+                  android:background="@android:color/transparent"
+                  android:text="Du lịch miền trung"
+                  android:textColor="#ffffff"
+                  android:textSize="20dp" />
+              <ImageView
+                  android:id="@+id/arr2"
+                  android:layout_gravity="clip_horizontal"
+                  android:layout_width="wrap_content"
+                  android:layout_height="wrap_content"
+                  android:src="@drawable/arr1"
+                  android:paddingTop="12dp"
+
+                  />
+          </LinearLayout>
+
+      </FrameLayout>
+
+
+      <FrameLayout
+          android:layout_width="match_parent"
+          android:layout_height="match_parent"
+          android:layout_weight="1"
+          >
+          <ViewFlipper
+              android:layout_width="match_parent"
+              android:layout_height="match_parent"
+              android:id="@+id/flip3"
+              >
+
+              <ImageView
+                  android:id="@+id/img_mtay1"
+                  android:layout_width="match_parent"
+                  android:layout_height="match_parent"
+                  android:scaleType="fitXY"
+                  android:src="@drawable/miennam"
+
+                  />
+              <ImageView
+                  android:id="@+id/img_mtay2"
+
+                  android:layout_width="match_parent"
+                  android:layout_height="match_parent"
+                  android:scaleType="fitXY"
+                  android:src="@drawable/img_mientay1"
+
+                  />
+              <ImageView
+                  android:id="@+id/img_mtay3"
+                  android:layout_width="match_parent"
+                  android:layout_height="match_parent"
+                  android:scaleType="fitXY"
+                  android:src="@drawable/img_mientay2"
+
+                  />
+
+          </ViewFlipper>
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="100dp"
+            android:layout_gravity="center|bottom">
+            <Button
+                android:id="@+id/btnMienNam"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:background="@android:color/transparent"
+                android:text="Du lịch miền nam"
+                android:textColor="#ffffff"
+                android:textSize="20dp" />
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/arr3"
+                android:layout_gravity="clip_horizontal"
+                android:paddingTop="12dp"
+                android:id="@+id/arr3"
+                />
+
+        </LinearLayout>
+
+
+      </FrameLayout>
+
+
+  </LinearLayout>
+
+
+
+
+
+
+</android.support.constraint.ConstraintLayout>
