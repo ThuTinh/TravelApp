@@ -9,9 +9,14 @@ import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
+import android.widget.EditText;
 import android.widget.ListView;
+import android.widget.MultiAutoCompleteTextView;
+import android.widget.SearchView;
 import android.widget.Toast;
 
 import com.example.thutinh.travel_app.Adapter.listTenTinhAdapter;
@@ -28,25 +33,23 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class listTenTinh extends AppCompatActivity {
-   listTenTinhAdapter adapter;
-   ListView listViewTenTinh;
-   String tenMien="";
+  private listTenTinhAdapter adapter;
+    private ListView listViewTenTinh;
+    private String tenMien="";
     private FirebaseAuth mAuth;
-   List<TenTinh_class> dsTenTinh;
-
+    private   List<TenTinh_class> dsTenTinh;
     private FirebaseDatabase database;
     private DatabaseReference myRef;
-
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_list_ten_tinh);
         mAuth = FirebaseAuth.getInstance();
-        listViewTenTinh = (ListView)findViewById(R.id.listTenTinh);
+        AnhXa();
         //Nhận dữ liệu từ màn hình chính
        Render();
-
+        getSupportActionBar().setTitle("List tỉnh");
        listViewTenTinh.setOnItemClickListener(new AdapterView.OnItemClickListener() {
            @Override
            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
@@ -63,7 +66,6 @@ public class listTenTinh extends AppCompatActivity {
 
                        }
                    });
-
                    AlertDialog alertDialog = dialog.create();
                    alertDialog.show();
 
@@ -78,44 +80,29 @@ public class listTenTinh extends AppCompatActivity {
                    it.putExtras(bl);
                    startActivity(it);
                }
-
-
-//               database = FirebaseDatabase.getInstance();
-//               myRef = database.getReference();
-//
-//               myRef.child(tenMien).child(tenTinh).addChildEventListener(new ChildEventListener() {
-//                   @Override
-//                   public void onChildAdded(@NonNull DataSnapshot dataSnapshot, @Nullable String s) {
-//                       MoTaChiTiet_class test = dataSnapshot.getValue(MoTaChiTiet_class.class);
-//                       Toast.makeText(listTenTinh.this, test.arrHinh.get(0).toString(),Toast.LENGTH_SHORT).show();
-//
-//                   }
-//
-//                   @Override
-//                   public void onChildChanged(@NonNull DataSnapshot dataSnapshot, @Nullable String s) {
-//
-//                   }
-//
-//                   @Override
-//                   public void onChildRemoved(@NonNull DataSnapshot dataSnapshot) {
-//
-//                   }
-//
-//                   @Override
-//                   public void onChildMoved(@NonNull DataSnapshot dataSnapshot, @Nullable String s) {
-//
-//                   }
-//
-//                   @Override
-//                   public void onCancelled(@NonNull DatabaseError databaseError) {
-//
-//                   }
-//               });
-//
-
            }
        });
+    }
 
+    private  void  AnhXa()
+    {
+        listViewTenTinh = (ListView)findViewById(R.id.listTenTinh);
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch (item.getItemId())
+        {
+            case android.R.id.home:
+                Intent it = new Intent(listTenTinh.this, MainActivity.class);
+                startActivity(it);
+                return true;
+
+            default:break;
+        }
+        return super.onOptionsItemSelected(item);
     }
 
     void Render()
@@ -179,7 +166,7 @@ public class listTenTinh extends AppCompatActivity {
             dsTenTinh.add(new TenTinh_class( "Gia Lai", R.drawable.chuyen_trang));
             dsTenTinh.add(new TenTinh_class("Đắc Lắc", R.drawable.chuyen_trang));
             dsTenTinh.add( new TenTinh_class("Vĩnh Phúc", R.drawable.chuyen_trang));
-            dsTenTinh.add(new TenTinh_class("Vĩnh Phúc", R.drawable.chuyen_trang));
+            dsTenTinh.add(new TenTinh_class("Đắc Nông", R.drawable.chuyen_trang));
 
 
 
@@ -214,9 +201,24 @@ public class listTenTinh extends AppCompatActivity {
 
     }
 
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(R.menu.search, menu);
+       android.support.v7.widget.SearchView searchView =(android.support.v7.widget.SearchView) menu.findItem(R.id.seachTinh).getActionView();
+        searchView.setOnQueryTextListener(new android.support.v7.widget.SearchView.OnQueryTextListener() {
+            @Override
+            public boolean onQueryTextSubmit(String s) {
+                adapter.filter(s.trim());
+                return false;
+            }
 
+            @Override
+            public boolean onQueryTextChange(String s) {
+                adapter.filter(s.trim());
+                return false;
+            }
+        });
 
-
-
-
+        return super.onCreateOptionsMenu(menu);
+    }
 }

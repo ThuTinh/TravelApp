@@ -1,332 +1,305 @@
 package com.example.thutinh.travel_app;
 
+import android.content.ClipData;
 import android.content.Intent;
 import android.graphics.Bitmap;
-import android.graphics.drawable.BitmapDrawable;
+import android.graphics.BitmapFactory;
+import android.media.Image;
 import android.net.Uri;
 import android.provider.MediaStore;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;
 import android.util.Log;
+import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.ImageView;
 import android.widget.PopupMenu;
+import android.widget.TextView;
 import android.widget.Toast;
 
+import com.bumptech.glide.Glide;
+import com.bumptech.glide.request.target.SimpleTarget;
+import com.bumptech.glide.request.transition.Transition;
+import com.example.thutinh.travel_app.Adapter.ThemAnhAdapter;
 import com.example.thutinh.travel_app.DTO.MoTaChiTiet_class;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
-import com.google.firebase.database.DataSnapshot;
-import com.google.firebase.database.DatabaseError;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
-import com.google.firebase.database.GenericTypeIndicator;
-import com.google.firebase.database.Query;
-import com.google.firebase.database.ValueEventListener;
 import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
 import com.google.firebase.storage.UploadTask;
+import com.squareup.picasso.Picasso;
 
 import java.io.ByteArrayOutputStream;
-import java.net.URI;
-import java.net.URL;
-import java.util.Calendar;
+import java.io.IOException;
+import java.text.SimpleDateFormat;
+import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 public class AddThongTinDiaDanh extends AppCompatActivity {
 
-    private Button btnTakeAPicture;
-    private  Button btnChooseFromFile;
-    private  Button btnLuu;
-    private  Button btnHuy;
+   // private Button btnLuu;
+   // private Button btnHuy;
+    private Button btnTake;
+    private Button btnChoose;
     private EditText txtTenDiaDanh;
-    private  EditText txtMoTa;
-    private ImageView img1,img2, img3;
-    private  Bundle bl;
-    MoTaChiTiet_class moTaChiTiet;
-    FirebaseStorage storage;
-    StorageReference storageRef ;
-    private  int request_code1 = 1;
-    private  int request_code2 = 2;
-    private  int request_code3 = 3;
-    private  int request_codeFile1 = 4;
-    private  int request_codeFile2 = 5;
-    private  int request_codeFile3 = 6;
-    FirebaseDatabase database ;
-    DatabaseReference myRef ;
+    private EditText txtMoTa;
+    private Bundle bl;
+    private MoTaChiTiet_class moTaChiTiet;
+    private FirebaseStorage storage;
+    private StorageReference storageRef;
+    private int request_code = 1;
+    private int request_codeFile = 2;
+    private FirebaseDatabase database;
+    private DatabaseReference myRef;
+    private RecyclerView rvAddAnh;
+    private List<Bitmap> listHinh;
+    private ThemAnhAdapter themAnhAdapter;
+    boolean checkIsFirst = true;
+    private String Edit;
+    private TextView txtAddThongTinDiaDanhViTri;
+    private FirebaseAuth mAuth;
+    private FirebaseUser user;
+    private  String name;
 
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_add_thong_tin_dia_danh);
+
         storage = FirebaseStorage.getInstance();
         storageRef = storage.getReference();
         database = FirebaseDatabase.getInstance();
         myRef = database.getReference();
-        moTaChiTiet = new MoTaChiTiet_class();
+        mAuth = FirebaseAuth.getInstance();
+        user = mAuth.getCurrentUser();
+        name = user.getDisplayName();
+
+
         bl = getIntent().getExtras();
         AnhXa();
+        Edit = bl.getString("Edit","0");
+        if(Edit.equals("1"))
+        {
+            moTaChiTiet = (MoTaChiTiet_class)bl.getSerializable("Item");
+            txtTenDiaDanh.setText(moTaChiTiet.getTenDiaDanh());
+            txtMoTa.setText(moTaChiTiet.getMoTa());
+            txtAddThongTinDiaDanhViTri.setText(moTaChiTiet.getViTri());
+            for(int i = 0; i<moTaChiTiet.getArrHinh().size(); i++)
+          {
+            try
+            {
+                //   Bitmap bm = getBitmapFromURL(item.arrHinh.get(i));
+                Glide
+                        .with(getApplicationContext())
+                        .asBitmap()
+                        .load(moTaChiTiet.arrHinh.get(i))
+                        .into(new SimpleTarget<Bitmap>(100,100) {
+                            @Override
+                            public void onResourceReady(Bitmap resource, Transition<? super Bitmap> transition) {
+                                listHinh.add(resource);
+                            }
+                        });
 
-        img1.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                ShowPopupMenu1();
-
+            }catch (Exception e)
+            {
+                Toast.makeText(this, "Lỗi, Thử lại sau", Toast.LENGTH_SHORT).show();
             }
-        });
-        img2.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                ShowPopupMenu2();
-            }
-        });
-        img3.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                ShowPopupMenu3();
-            }
-        });
-       // DatabaseReference myRef;
-        btnLuu.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                try
-                {
-                    if(txtMoTa.getText().length()==0 || txtTenDiaDanh.getText().length()==0)
-                    {
-                        Toast.makeText(AddThongTinDiaDanh.this, "Thông tin chưa đầy đủ",Toast.LENGTH_SHORT).show();
-                    }
-                    else
-                    {
-                        moTaChiTiet.setMoTa(txtMoTa.getText().toString());
-                        moTaChiTiet.setTenDiaDanh(txtTenDiaDanh.getText().toString());
-                        myRef.child(bl.getString("TenMien")).child(bl.getString("TenTinh")).push().setValue(moTaChiTiet);
-                        Toast.makeText(AddThongTinDiaDanh.this, "Add Succces",Toast.LENGTH_SHORT).show();
-                        Intent it = new Intent(AddThongTinDiaDanh.this, listthongtin.class);
-                        it.putExtras(bl);
-                        finish();
-                        startActivity(it);
+        }
 
-                    }
+        }
+        else
+            moTaChiTiet = new MoTaChiTiet_class();
 
-                }catch (Exception e)
-                {
-                    Toast.makeText(AddThongTinDiaDanh.this, "Add Fail, Try Again!!",Toast.LENGTH_SHORT).show();
-                }
-            }
-        });
-        btnHuy.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                finish();
-            }
-        });
-
-
-//        myRef.child(bl.getString("TenMien")).child(bl.getString("TenTinh")).addValueEventListener(new ValueEventListener(){
+//        btnTake.setOnClickListener(new View.OnClickListener() {
 //            @Override
-//            public void onDataChange(DataSnapshot dataSnapshot){
-//                /* This method is called once with the initial value and again whenever data at this location is updated.*/
-//                long value=dataSnapshot.getChildrenCount();
-//                Log.d("So luong ","no of children: "+value);
+//            public void onClick(View v) {
+//                Intent it = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
+//                startActivityForResult(it, request_code);
 //
-//                GenericTypeIndicator<List<MoTaChiTiet_class>> genericTypeIndicator =new GenericTypeIndicator<List<MoTaChiTiet_class>>(){};
-//
-//                List<MoTaChiTiet_class> taskDesList=dataSnapshot.getValue(genericTypeIndicator);
-//
-//                for(int i=0;i<taskDesList.size();i++){
-//                    Toast.makeText(AddThongTinDiaDanh.this,"TaskTitle = "+taskDesList.get(i).getTenDiaDanh(),Toast.LENGTH_LONG).show();
-//                }
-//            }
-//
-//            @Override
-//            public void onCancelled(DatabaseError error){
-//                // Failed to read value
-//                Log.w("Erooo ","Failed to read value.",error.toException());
 //            }
 //        });
-        // Demo
-
-    }
-
-    void AnhXa()
-    {
-
-        btnHuy = (Button)findViewById(R.id.btnHuy);
-        btnLuu = (Button)findViewById(R.id.btnLuu);
-        txtMoTa = (EditText)findViewById(R.id.txtMoTa);
-        txtTenDiaDanh = (EditText)findViewById(R.id.txtTenDiaDanh);
-        img1 = (ImageView)findViewById(R.id.img1);
-        img2 = (ImageView)findViewById(R.id.img2);
-        img3= (ImageView)findViewById(R.id.img3);
-
-    }
-
-    //ham load anh len storge
-     void LoadImg(ImageView img)
-    {
-
-            String tenDiaDanh = txtTenDiaDanh.getText().toString().trim();
-            final StorageReference mountainsRef = storageRef.child(bl.getString("TenTinh")+"_"+tenDiaDanh+System.currentTimeMillis()+".png");
-            img.setDrawingCacheEnabled(true);
-            img.buildDrawingCache();
-            Bitmap bitmap = ((BitmapDrawable) img.getDrawable()).getBitmap();
-            ByteArrayOutputStream baos = new ByteArrayOutputStream();
-            bitmap.compress(Bitmap.CompressFormat.PNG, 100, baos);
-            byte[] data = baos.toByteArray();
-            UploadTask uploadTask = mountainsRef.putBytes(data);
-            uploadTask.addOnFailureListener(new OnFailureListener() {
-                @Override
-                public void onFailure(@NonNull Exception exception) {
-                    Toast.makeText(AddThongTinDiaDanh.this,"Tạo không thành công", Toast.LENGTH_SHORT).show();
-                }
-            }).addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
-                @Override
-                public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
-
-                    Task<Uri> urlTask = taskSnapshot.getStorage().getDownloadUrl();
-                    while (!urlTask.isSuccessful());
-                    Uri downloadUrl = urlTask.getResult();
-                   // Log.d("tao so may roi day", downloadUrl.toString());
-                    moTaChiTiet.arrHinh.add(downloadUrl.toString());
-                }
-            });
-    }
-
-    void ShowPopupMenu1()
-    {
-        PopupMenu popup = new PopupMenu(AddThongTinDiaDanh.this,img1);
-        popup.getMenuInflater().inflate(R.menu.pupmenu_chon_anh,popup.getMenu());
-        popup.setOnMenuItemClickListener(new PopupMenu.OnMenuItemClickListener() {
+        btnChoose.setOnClickListener(new View.OnClickListener() {
             @Override
-            public boolean onMenuItemClick(MenuItem item) {
-               if(item.getItemId()==R.id.itemTakeAPicture)
-               {
-                   Intent it = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
-                   startActivityForResult(it,request_code1);
-
-               }
-               if (item.getItemId()==R.id.itemChooseFromFile)
-               {
-                   Intent it = new Intent(Intent.ACTION_PICK,  MediaStore.Images.Media.EXTERNAL_CONTENT_URI);
-                   it.setType("image/*");
-                   startActivityForResult(it.createChooser(it,"Select file"), request_codeFile1);
-               }
-               return  false;
+            public void onClick(View v) {
+                Intent i = new Intent(Intent.ACTION_PICK, MediaStore.Images.Media.EXTERNAL_CONTENT_URI);
+                startActivityForResult(i, request_codeFile);
             }
         });
+        //tạo nút mũi tên trên thành toolbar
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
-        popup.show();
+        themAnhAdapter = new ThemAnhAdapter(listHinh,moTaChiTiet.arrHinh);
+        rvAddAnh.setAdapter(themAnhAdapter);
+        LinearLayoutManager layoutManager = new LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false);
+        rvAddAnh.setLayoutManager(layoutManager);
     }
 
-    void ShowPopupMenu2()
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(R.menu.menu_add_thong_tin, menu);
+        return super.onCreateOptionsMenu(menu);
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch (item.getItemId()) {
+            case android.R.id.home:
+                onBackPressed();
+                return true;
+            case R.id.save:
+                    Luu();
+            default:
+                break;
+        }
+        return super.onOptionsItemSelected(item);
+    }
+    public  void ShowPopupMenu()
     {
-        PopupMenu popup = new PopupMenu(AddThongTinDiaDanh.this,img2);
-        popup.getMenuInflater().inflate(R.menu.pupmenu_chon_anh,popup.getMenu());
-        popup.setOnMenuItemClickListener(new PopupMenu.OnMenuItemClickListener() {
+
+
+    }
+
+    void AnhXa() {
+        btnTake = (Button) findViewById(R.id.btnTake);
+        btnChoose = (Button) findViewById(R.id.btnChoose);
+        txtMoTa = (EditText) findViewById(R.id.txtMoTa);
+        txtTenDiaDanh = (EditText) findViewById(R.id.txtTenDiaDanh);
+       // Bitmap img = BitmapFactory.decodeResource(getResources(), R.drawable.no_img1);
+        listHinh = new ArrayList<>();
+       // listHinh.add(img);
+        rvAddAnh = (RecyclerView) findViewById(R.id.rvAddAnh);
+        txtAddThongTinDiaDanhViTri = (EditText)findViewById(R.id.txtAddThongTinDiaDanhViTri);
+    }
+
+  Boolean isDone = false;
+    void LoadImg(Bitmap bm) {
+
+        String tenDiaDanh = txtTenDiaDanh.getText().toString().trim();
+        final StorageReference mountainsRef = storageRef.child(bl.getString("TenTinh") + "_" + tenDiaDanh + System.currentTimeMillis() + ".png");
+        //img.setDrawingCacheEnabled(true);
+       // img.buildDrawingCache();
+       // Bitmap bitmap = ((BitmapDrawable) img.getDrawable()).getBitmap();
+        Bitmap bitmap = bm;
+        ByteArrayOutputStream baos = new ByteArrayOutputStream();
+        bitmap.compress(Bitmap.CompressFormat.PNG, 100, baos);
+        byte[] data = baos.toByteArray();
+        UploadTask uploadTask = mountainsRef.putBytes(data);
+        uploadTask.addOnFailureListener(new OnFailureListener() {
             @Override
-            public boolean onMenuItemClick(MenuItem item) {
-                if(item.getItemId()==R.id.itemTakeAPicture)
-                {
-                    Intent it = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
-                    startActivityForResult(it,request_code2);
-                }
-                if (item.getItemId()==R.id.itemChooseFromFile)
-                {
+            public void onFailure(@NonNull Exception exception) {
+                Toast.makeText(AddThongTinDiaDanh.this, "Tạo không thành công", Toast.LENGTH_SHORT).show();
+            }
+        }).addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
+            @Override
+            public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
 
-                    Intent it = new Intent(Intent.ACTION_PICK,  MediaStore.Images.Media.EXTERNAL_CONTENT_URI);
-                    it.setType("image/*");
-                    startActivityForResult(it.createChooser(it,"Select file"), request_codeFile2);
-
-                }
-                return  false;
+                Task<Uri> urlTask = taskSnapshot.getStorage().getDownloadUrl();
+                while (!urlTask.isSuccessful()) ;
+                Uri downloadUrl = urlTask.getResult();
+               themAnhAdapter.arrHinh.add(downloadUrl.toString());
+              //  isDone = true;
+            Toast.makeText(AddThongTinDiaDanh.this, moTaChiTiet.arrHinh.size()+"",Toast.LENGTH_SHORT).show();
             }
         });
-
-        popup.show();
     }
 
-    void ShowPopupMenu3()
+
+    private  void Luu()
     {
-        PopupMenu popup = new PopupMenu(AddThongTinDiaDanh.this,img3);
-        popup.getMenuInflater().inflate(R.menu.pupmenu_chon_anh,popup.getMenu());
-        popup.setOnMenuItemClickListener(new PopupMenu.OnMenuItemClickListener() {
-            @Override
-            public boolean onMenuItemClick(MenuItem item) {
-                if(item.getItemId()==R.id.itemTakeAPicture)
+        try {
+            if (txtMoTa.getText().length() == 0 || txtTenDiaDanh.getText().length() == 0) {
+                Toast.makeText(AddThongTinDiaDanh.this, "Thông tin chưa đầy đủ", Toast.LENGTH_SHORT).show();
+            } else {
+
+                    moTaChiTiet.arrHinh = new ArrayList<>();
+                    moTaChiTiet.arrHinh.addAll(themAnhAdapter.arrHinh);
+
+
+                    //Lay gio he thong
+                    Date thoiGian = new Date();
+                    //Khai bao dinh dang ngay thang
+                    SimpleDateFormat dinhDangThoiGian = new SimpleDateFormat("HH:mm:ss dd/MM/yyyy ");
+                    //parse ngay thang sang dinh dang va chuyen thanh string.
+                    String showTime = dinhDangThoiGian.format(thoiGian.getTime());
+
+                moTaChiTiet.setViTri(txtAddThongTinDiaDanhViTri.getText().toString());
+                moTaChiTiet.listEdit.add(showTime + " Edit by: "+name);
+                moTaChiTiet.setMoTa(txtMoTa.getText().toString());
+                moTaChiTiet.setTenDiaDanh(txtTenDiaDanh.getText().toString());
+                if(Edit.equals("1"))
                 {
-                    Intent it = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
-                    startActivityForResult(it,request_code3);
+
+                    myRef.child("ThongTin").child(bl.getString("TenMien")).child(bl.getString("TenTinh")).child(moTaChiTiet.getKey()).setValue(moTaChiTiet);
+                    Toast.makeText(AddThongTinDiaDanh.this, "Edit Succces", Toast.LENGTH_SHORT).show();
+                    Intent it = new Intent(AddThongTinDiaDanh.this, listthongtin.class);
+                    it.putExtras(bl);
+                    startActivity(it);
+
                 }
-                if (item.getItemId()==R.id.itemChooseFromFile)
+                else
                 {
-                    Intent it = new Intent(Intent.ACTION_PICK,  MediaStore.Images.Media.INTERNAL_CONTENT_URI);
-                    it.setType("image/*");
-                    startActivityForResult(it.createChooser(it,"Select file"), request_codeFile3);
+
+                    myRef.child("ThongTin").child(bl.getString("TenMien")).child(bl.getString("TenTinh")).push().setValue(moTaChiTiet);
+                    Toast.makeText(AddThongTinDiaDanh.this, "Add Succces", Toast.LENGTH_SHORT).show();
+                    Intent it = new Intent(AddThongTinDiaDanh.this, listthongtin.class);
+                    it.putExtras(bl);
+                   // finish();
+                    startActivity(it);
                 }
-                return  false;
+
             }
 
-        });
+        } catch (Exception e) {
+            Toast.makeText(AddThongTinDiaDanh.this, "Lỗi, Thử lại sau", Toast.LENGTH_SHORT).show();
 
-        popup.show();
+        }
     }
+
 
     @Override
     protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
         Bitmap bitmap;
-        if(requestCode==request_code1&& resultCode==RESULT_OK&&data!=null)
-        {
-            bitmap = (Bitmap)data.getExtras().get("data");
-            img1.setImageBitmap(bitmap);
-            LoadImg(img1);
-        }
-        if(requestCode==request_code2&& resultCode==RESULT_OK&&data!=null)
-        {
-            bitmap = (Bitmap)data.getExtras().get("data");
-            img2.setImageBitmap(bitmap);
-            LoadImg(img2);
-        }
-        if(requestCode==request_code3&& resultCode==RESULT_OK&&data!=null)
-        {
-            bitmap = (Bitmap)data.getExtras().get("data");
-            img3.setImageBitmap(bitmap);
-            LoadImg(img3);
+
+
+        if (requestCode == request_code && resultCode == RESULT_OK && data != null) {
+            bitmap = (Bitmap) data.getExtras().get("data");
+            listHinh.add(bitmap);
 
         }
-        if(requestCode==request_codeFile1 && resultCode==RESULT_OK &&data!=null)
-        {
-            Uri uri = data.getData();
-            img1.setImageURI(uri);
-            LoadImg(img1);
+        if (requestCode == request_codeFile && resultCode == RESULT_OK && data != null) {
+
+                Uri uri = data.getData();
+                try {
+                    Bitmap bt = MediaStore.Images.Media.getBitmap(getContentResolver(), uri);
+                    listHinh.add(bt);
+
+//                Uri uri = data.getData();
+//                img1.setImageURI(uri);
+// LoadImg(bt);
+                LoadImg(bt);
+
+                } catch (IOException e) {
+                    Log.d("166", e.toString());
+                }
+        }
+
+        themAnhAdapter.notifyDataSetChanged();
+            super.onActivityResult(requestCode, resultCode, data);
 
         }
-        if(requestCode==request_codeFile2 && resultCode==RESULT_OK &&data!=null)
-        {
-            Uri uri = data.getData();
-            img2.setImageURI(uri);
-            LoadImg(img2);
-
-
-        }
-        if(requestCode==request_codeFile3 && resultCode==RESULT_OK &&data!=null)
-        {
-            Uri uri = data.getData();
-            img3.setImageURI(uri);
-            LoadImg(img3);
-
-
-        }
-        super.onActivityResult(requestCode, resultCode, data);
-
-    }
 
 
 }

@@ -3,9 +3,14 @@
     package="com.example.thutinh.travel_app">
 
     <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
 
-
-
+    <!--
+         The ACCESS_COARSE/FINE_LOCATION permissions are not required to use
+         Google Maps Android API v2, but you must specify either coarse or fine
+         location permissions for the 'MyLocation' functionality. 
+    -->
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
 
     <application
         android:allowBackup="true"
@@ -16,6 +21,10 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
+        <meta-data
+            android:name="com.google.android.geo.API_KEY"
+            android:value="@string/api_key" />
+
         <activity
             android:name=".MainActivity"
             android:label="@string/app_name"
@@ -26,7 +35,9 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".dangnhap" />
+        <activity
+            android:name=".dangnhap"
+            android:theme="@style/AppTheme" />
         <activity android:name=".dangki" />
         <activity android:name=".listthongtin" />
         <activity android:name=".listTenTinh" />
@@ -36,7 +47,29 @@
             android:name="preloaded_fonts"
             android:resource="@array/preloaded_fonts" />
 
-        <activity android:name=".ThongTinDichVuTab" />
+        <activity android:name=".ResetPassword" />
+        <activity
+            android:name=".map"
+            android:label="@string/title_activity_map" />
+        <activity android:name=".map_dulich" />
+        <activity android:name=".ListHome" />
+        <activity android:name=".ThongTinDichVuChiTiet" />
+        <activity android:name=".ChiTietHome" />
+        <activity android:name=".AddHome" />
+        <activity android:name=".ListDichVu" />
+        <activity android:name=".Tour" />
+        <activity android:name=".AmThuc" />
+        <activity android:name=".ListAnUong" />
+        <activity android:name=".AddAnUong" />
+        <activity android:name=".ChiTietMonAn" />
+        <activity android:name=".AddSanPham" />
+        <activity android:name=".ThongTinDiaDiem" />
+        <activity
+            android:name=".MapClient"
+            android:label="@string/title_activity_map_client" />
+        <activity android:name=".ListEditor" />
+        <activity android:name=".AddTour" />
+        <activity android:name=".ListTour"></activity>
     </application>
 
 </manifest>

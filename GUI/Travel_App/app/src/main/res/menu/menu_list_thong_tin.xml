@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item android:id="@+id/create" android:title="Thêm địa điểm du lịch"></item>
+    <item android:id="@+id/dichvu"  android:title="Thông tin dịch vụ"> </item>
+
+</menu>

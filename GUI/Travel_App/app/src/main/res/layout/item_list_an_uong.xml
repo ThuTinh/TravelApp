@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.v7.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    xmlns:card_view="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    android:layout_margin="10dp"
+    android:id="@+id/cardListAnUOng"
+    card_view:cardCornerRadius="10dp"
+    card_view:cardElevation="10dp"
+    card_view:cardBackgroundColor="#f3ecd3"
+
+    android:layout_height="wrap_content">
+    <LinearLayout
+        android:layout_margin="8dp"
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <ImageView
+            android:id="@+id/imgListAnUong"
+            android:scaleType="centerCrop"
+            android:layout_width="match_parent"
+            android:layout_height="160dp" />
+        <TextView
+            android:layout_width="match_parent"
+            android:textAlignment="center"
+            android:textSize="15dp"
+            android:id="@+id/lbNameListAnUong"
+            android:textColor="#474f85"
+            android:text="ten"
+            android:ellipsize="end"
+            android:lines="2"
+            android:layout_height="wrap_content" />
+
+    </LinearLayout>
+
+
+
+
+
+
+</android.support.v7.widget.CardView>

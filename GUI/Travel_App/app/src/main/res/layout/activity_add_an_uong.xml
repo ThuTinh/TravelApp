@@ -1,0 +1,274 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:orientation="vertical"
+    android:layout_height="match_parent"
+    tools:context=".AddAnUong">
+    <android.support.v4.widget.NestedScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:orientation="vertical"
+            android:layout_height="match_parent">
+
+            <TextView
+              android:textColor="#76b39d"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Danh sách các món ăn"
+                android:textAlignment="center"
+                android:textSize="30dp" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Thêm thông tin chi tiết món ăn" />
+
+                <ImageView
+                    android:id="@+id/imgAddSanPham"
+                    android:layout_width="100dp"
+                    android:layout_height="100dp"
+                    android:scaleType="centerCrop" />
+
+                <Button
+                    android:id="@+id/btnAddSanPhamChoose"
+                    android:layout_width="131dp"
+                    android:layout_height="32dp"
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginTop="10dp"
+                    android:background="@drawable/button_custom"
+                    android:text="Choose a picture"
+                    android:textAllCaps="false"
+                    android:textColor="#ffffff"
+                    android:textSize="15dp" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+                <TextView
+                    android:textSize="20dp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Tên món ăn:"/>
+                <EditText
+                    android:id="@+id/txtAddsanPhamTen"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:textSize="20dp"
+                    />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+                <TextView
+                    android:textSize="20dp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Giá"/>
+                <EditText
+                    android:id="@+id/txtAddSanPhamGia"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:textSize="20dp"
+                    />
+
+            </LinearLayout>
+
+            <Button
+                android:id="@+id/btnAddSanPhamThem"
+                android:layout_width="wrap_content"
+                android:layout_height="30dp"
+                android:background="@drawable/button_custom"
+                android:text="Thêm"
+                android:textAllCaps="false"
+                android:textColor="#ffffff" />
+
+            <!--<TextView-->
+                <!--android:id="@+id/lbSoSanPhamDaThem"-->
+                <!--android:layout_width="wrap_content"-->
+                <!--android:layout_height="wrap_content"-->
+                <!--android:text="Số sản phẩm đã thêm: 0"-->
+                <!--android:textColor="#f12d2d"-->
+                <!--android:textSize="20dp" />-->
+
+
+
+            <!--<Button-->
+                <!--android:layout_marginLeft="15dp"-->
+                <!--android:id="@+id/btnAddAnUongThem"-->
+                <!--android:layout_width="129dp"-->
+                <!--android:layout_height="36dp"-->
+                <!--android:textColor="#ffffff"-->
+                <!--android:background="@drawable/button_custom"-->
+                <!--android:text="Thêm"-->
+                <!--android:textSize="15dp" />-->
+            <android.support.v7.widget.RecyclerView
+                android:layout_marginTop="10dp"
+                android:id="@+id/rvDanhMucCacSanPham"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+            </android.support.v7.widget.RecyclerView>
+            <LinearLayout
+                android:layout_marginTop="20dp"
+                android:id="@+id/linerlayout"
+                android:orientation="vertical"
+                android:background="#e8e2db"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <TextView
+                    android:textColor="#76b39d"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:textSize="30dp"
+                    android:textAlignment="center"
+                    android:text="Thông tin"/>
+
+                <LinearLayout
+                    android:orientation="horizontal"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Tên nhà cung cấp"
+                        />
+                    <EditText
+                        android:id="@+id/txtAnUongTenNhaCungCap"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        />
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:orientation="horizontal"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Phone"
+                        />
+                    <EditText
+                        android:id="@+id/txtAnUongPhone"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        />
+
+                </LinearLayout>
+                <LinearLayout
+                    android:orientation="horizontal"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Email"
+                        />
+                    <EditText
+                        android:id="@+id/txtAnUongEmail"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        />
+
+                </LinearLayout>
+                <LinearLayout
+                    android:orientation="horizontal"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Facebook"
+                        />
+                    <EditText
+                        android:id="@+id/txtAnUongFacebook"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        />
+
+                </LinearLayout>
+                <LinearLayout
+                    android:orientation="horizontal"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="vị trí"
+                        />
+                    <EditText
+                        android:id="@+id/txtAnUongViTri"
+                        android:layout_width="40dp"
+                        android:layout_height="wrap_content"
+                        />
+                   <fragment
+                       android:id="@+id/txtPlaceAutocomplete"
+                       android:name="com.google.android.gms.location.places.ui.PlaceAutocompleteFragment"
+                       android:layout_width="match_parent"
+                       android:layout_height="30dp">
+
+                   </fragment>
+
+                </LinearLayout>
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textAlignment="center"
+                    android:text="Nội Dung"/>
+
+                <EditText
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:textSize="20dp"
+                    android:id="@+id/txtAddAnUongNoiDung"/>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="Thêm hình để mô tả quán ăn"/>
+                    <ImageView
+                        android:id="@+id/imgAnUong"
+                        android:layout_width="120dp"
+                        android:layout_height="120dp"
+                        android:scaleType="centerCrop"
+                        android:src="@drawable/noimg" />
+
+                    <Button
+                        android:id="@+id/btnAddAnUongChoose"
+                        android:layout_width="112dp"
+                        android:layout_height="31dp"
+                        android:layout_marginLeft="10dp"
+                        android:layout_marginTop="10dp"
+                        android:background="@drawable/button_custom"
+                        android:text="Choose a picture"
+                        android:textAllCaps="false"
+                        android:textColor="#ffffff"
+                        android:textSize="12dp" />
+                </LinearLayout>
+
+            </LinearLayout>
+
+        </LinearLayout>
+
+    </android.support.v4.widget.NestedScrollView>
+</LinearLayout>

@@ -1,0 +1,127 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:orientation="vertical"
+    android:layout_height="match_parent"
+    tools:context=".ThongTinDiaDiem">
+    <android.support.v4.widget.NestedScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <LinearLayout
+            android:orientation="vertical"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+
+    <technolifestyle.com.imageslider.FlipperLayout
+        android:id="@+id/flipAnhThongTin"
+        android:layout_width="match_parent"
+        android:layout_height="200dp">
+    </technolifestyle.com.imageslider.FlipperLayout>
+
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <ImageView
+
+            android:layout_marginBottom="10dp"
+            android:id="@+id/imgThaTim"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/timtrang" />
+
+
+    </LinearLayout>
+            <LinearLayout
+                android:layout_marginLeft="10dp"
+                android:layout_width="match_parent"
+                android:orientation="horizontal"
+                android:layout_marginBottom="10dp"
+                android:layout_height="wrap_content">
+                <ImageView
+                    android:layout_width="20dp"
+                    android:layout_height="30dp"
+                    android:src="@drawable/map" />
+                <TextView
+                    android:textColor="#a20e0e"
+                    android:id="@+id/lbThongTinDiaDanhViTri"
+                    android:layout_marginTop="10dp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Địa điểm"/>
+
+            </LinearLayout>
+
+            <TextView
+                android:id="@+id/lbTenDiaDanh"
+                android:layout_width="match_parent"
+                android:layout_height="44dp"
+                android:fontFamily="sans-serif"
+                android:text="Tên địa danh"
+                android:textAlignment="center"
+                android:textColor="@color/colorTextDangNhap"
+                android:textSize="30dp" />
+
+            <TextView
+                android:id="@+id/lbContent"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:fontFamily="sans-serif"
+                android:text="Nội dung"
+                android:textColor="@color/colorTextDangNhap"
+                android:textSize="15dp" />
+
+    <TextView
+        android:id="@+id/lbCmt"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="BÌNH LUẬN"
+        android:textColor="#05004e"
+        android:textSize="20dp" />
+
+    <android.support.v7.widget.RecyclerView
+        android:id="@+id/rvCmt"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+
+        ></android.support.v7.widget.RecyclerView>
+
+    <EditText
+        android:layout_margin="10dp"
+        android:id="@+id/txtComment"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Bình luận..." />
+
+    <Button
+        android:id="@+id/btnComment"
+        android:layout_width="111dp"
+        android:layout_height="34dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginBottom="20dp"
+        android:background="@drawable/button_custom"
+        android:text="Thêm"
+        android:layout_marginLeft="20dp"
+        android:textAllCaps="false"
+        android:textColor="#ffffff" />
+
+            <TextView
+                android:id="@+id/lbNameEdit"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="20dp"
+                android:text="Edit last by tinh"
+                android:textAlignment="viewEnd"
+                android:textColor="#2a6171"
+                android:textSize="14sp"
+                android:textStyle="italic" />
+        </LinearLayout>
+    </android.support.v4.widget.NestedScrollView>
+
+
+</LinearLayout>

@@ -1,7 +1,7 @@
 package com.example.thutinh.travel_app.DTO;
 
 public class TenTinh_class {
-    private int hinh;
+     private int hinh;
      private String tenTinh;
 
     public int getHinh() {

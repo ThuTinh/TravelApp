@@ -12,6 +12,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.EditText;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.google.android.gms.tasks.OnCompleteListener;
@@ -26,6 +27,8 @@ public class dangnhap extends AppCompatActivity {
     private  EditText txtPassword;
     private Button btnDangNhap;
     private CheckBox chkRemember;
+    private TextView lbQuenMatKhau;
+    private TextView lbCreateAcount;
 
     FirebaseAuth.AuthStateListener mAuthListener;
     @Override
@@ -34,16 +37,29 @@ public class dangnhap extends AppCompatActivity {
         mAuth = FirebaseAuth.getInstance();
         setContentView(R.layout.activity_dangnhap);
         AnhXa();
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         btnDangNhap.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 DangNhap();
             }
         });
-
-
+        lbQuenMatKhau.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent it = new Intent(dangnhap.this, ResetPassword.class);
+                startActivity(it);
+                
+            }
+        });
+        lbCreateAcount.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent it = new Intent(getApplicationContext(),dangki.class);
+                startActivity(it);
+            }
+        });
     }
-
 
     //Anh xa
     void AnhXa()
@@ -51,59 +67,61 @@ public class dangnhap extends AppCompatActivity {
         txtEmail = (EditText) findViewById(R.id.txtLogInEmail);
         txtPassword = (EditText)findViewById(R.id.txtLogInPassword);
         btnDangNhap = (Button)findViewById(R.id.btnLogin);
-        chkRemember = (CheckBox)findViewById(R.id.chkRemember);
-
+        lbCreateAcount  = (TextView)findViewById(R.id.lbCreateAcount);
+        lbQuenMatKhau  = (TextView)findViewById(R.id.lbQuenMatKhau);
     }
 
     void DangNhap()
     {
-        String email;
-        String password;
-        email = txtEmail.getText().toString().trim();
-        password = txtPassword.getText().toString().trim();
-        if(txtPassword.equals(null)|| txtEmail.equals(null))
+        try {
+            String email;
+            String password;
+            email = txtEmail.getText().toString().trim();
+            password = txtPassword.getText().toString().trim();
+            if (email.length() == 0 || password.length() == 0) {
+                Toast.makeText(dangnhap.this, "Thông tin nhập chưa đầy đủ!", Toast.LENGTH_SHORT).show();
+
+            } else {
+                mAuth.signInWithEmailAndPassword(email, password)
+                        .addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
+                            @Override
+                            public void onComplete(@NonNull Task<AuthResult> task) {
+                                Log.d("Thong báo", "signInWithEmail:onComplete:" + task.isSuccessful());
+
+
+                                // Nếu không đăng nhập được, thì cho hiện Toast thông báo.
+                                if (!task.isSuccessful()) {
+                                    Log.w("loi", "signInWithEmail:failed", task.getException());
+                                    Toast.makeText(getApplicationContext(), "Lỗi", Toast.LENGTH_SHORT).show();
+                                } else {
+                                    Toast.makeText(getApplicationContext(), "Đăng nhập thành công", Toast.LENGTH_SHORT).show();
+                                    Intent it = new Intent(dangnhap.this, MainActivity.class);
+                                    startActivity(it);
+                                }
+
+                                // Nếu đăng nhập được, thì thực hiện các thao tác khác.
+                                // doSomething();
+                            }
+                        });
+            }
+        }
+        catch(Exception e)
         {
-
+            Toast.makeText(dangnhap.this, "Đăng nhập lỗi!", Toast.LENGTH_SHORT).show();
         }
-        else {
-            mAuth.signInWithEmailAndPassword(email, password)
-                    .addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
-                        @Override
-                        public void onComplete(@NonNull Task<AuthResult> task) {
-                            Log.d("Thong báo", "signInWithEmail:onComplete:" + task.isSuccessful());
-
-
-                            // Nếu không đăng nhập được, thì cho hiện Toast thông báo.
-                            if (!task.isSuccessful()) {
-                                Log.w("loi", "signInWithEmail:failed", task.getException());
-                                Toast.makeText(getApplicationContext(), "Failed to sign in", Toast.LENGTH_SHORT).show();
-                            }
-                            else
-                            {
-                                Toast.makeText(getApplicationContext(), "Susscess to sign in", Toast.LENGTH_SHORT).show();
-                                Intent it = new Intent(dangnhap.this, MainActivity.class);
-                                startActivity(it);
-                            }
-
-                            // Nếu đăng nhập được, thì thực hiện các thao tác khác.
-                            // doSomething();
-                        }
-                    });
-        }
-
-    }
-    @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-        getMenuInflater().inflate(R.menu.back,menu);
-        return super.onCreateOptionsMenu(menu);
 
     }
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
-        if(item.getItemId()==R.id.back)
-            this.finish();
+        switch (item.getItemId())
+        {
+            case android.R.id.home:
+                onBackPressed();
+                return true;
 
+            default:break;
+        }
         return super.onOptionsItemSelected(item);
     }
 }

@@ -1,0 +1,172 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".ChiTietHome">
+    <android.support.v4.widget.NestedScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+        <LinearLayout
+            android:orientation="vertical"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+            <technolifestyle.com.imageslider.FlipperLayout
+                android:layout_width="match_parent"
+                android:id="@+id/flipChiTietHome"
+                android:layout_height="200dp">
+
+            </technolifestyle.com.imageslider.FlipperLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_marginBottom="10dp"
+                android:orientation="horizontal"
+                android:layout_height="wrap_content">
+                <ImageView
+                    android:layout_width="20dp"
+                    android:layout_height="30dp"
+                    android:src="@drawable/map" />
+                <TextView
+                    android:textColor="#a20e0e"
+                    android:id="@+id/lbChiTietHomeViTri"
+                    android:layout_marginTop="10dp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Địa điểm"/>
+
+
+            </LinearLayout>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+                <LinearLayout
+
+                    android:layout_weight="1"
+                android:orientation="vertical"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content">
+
+                <ImageView
+                    android:layout_gravity="center"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:src="@drawable/phone"/>
+
+                <TextView
+
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Phone"
+                    android:id="@+id/lbChiTietHomePhone"
+                    android:textAlignment="center"
+                    />
+
+            </LinearLayout>
+                <LinearLayout
+
+                    android:layout_weight="1"
+                    android:orientation="vertical"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content">
+
+                    <ImageView
+                        android:layout_gravity="center"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:src="@drawable/facebook"/>
+
+                    <TextView
+                        android:id="@+id/lbChiTietHomeFace"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:textAlignment="center"
+                        android:text="facbook"
+                        />
+
+                </LinearLayout>
+                <LinearLayout
+
+                    android:layout_weight="1"
+                    android:orientation="vertical"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content">
+
+                    <ImageView
+                      android:layout_gravity="center"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:src="@drawable/email"/>
+
+                    <TextView
+
+                        android:id="@+id/lbChiTietHomeEmail"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:textAlignment="center"
+                        android:text="Email"
+                        />
+
+                </LinearLayout>
+
+
+            </LinearLayout>
+            <TextView
+                android:textColor="#fd5f00"
+                android:textSize="30dp"
+                android:id="@+id/lbChiTietNameHome"
+                android:textAlignment="center"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Name Home"/>
+            <TextView
+                android:layout_marginLeft="5dp"
+                android:id="@+id/lbChiTietNoiDung"
+                android:textSize="18dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Nội dung"/>
+            <TextView
+                android:textColor="#2c3848"
+                android:textSize="20dp"
+                android:id="@+id/lbChiTietHomeBinhLuan"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Bình luận"/>
+            <android.support.v7.widget.RecyclerView
+                android:id="@+id/rvChiTietHomeCmt"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+            </android.support.v7.widget.RecyclerView>
+            <EditText
+                android:id="@+id/txtChiTietHomeCmt"
+                android:layout_marginLeft="20dp"
+                android:layout_marginRight="20dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Phản hồi..."/>
+
+            <Button
+                android:id="@+id/btnChiTietHomeCmt"
+                android:layout_width="100dp"
+                android:layout_height="33dp"
+                android:layout_marginBottom="20dp"
+                android:layout_marginLeft="25dp"
+                android:background="@drawable/button_custom"
+                android:text="Save"
+                android:textAllCaps="false"
+                android:textColor="#ffffff" />
+
+
+
+        </LinearLayout>
+
+
+
+
+
+    </android.support.v4.widget.NestedScrollView>
+</LinearLayout>

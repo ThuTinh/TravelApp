@@ -4,15 +4,26 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="#c6f1e7"
     tools:context=".listTenTinh"
     >
-    <ListView
+
+    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:id="@+id/listTenTinh"
-        android:background="#393e46"
-        android:dividerHeight="1dp"
-        android:divider="#929aab"
-        ></ListView>
+        android:orientation="vertical"
+        android:layout_height="wrap_content"
+        >
+
+        <ListView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:id="@+id/listTenTinh"
+            android:background="#393e46"
+            android:dividerHeight="1dp"
+            android:divider="#509aaf"
+            ></ListView>
+    </LinearLayout>
+
+
 
 </android.support.constraint.ConstraintLayout>

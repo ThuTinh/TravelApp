@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#393e46"
+    android:background="#f0fff3"
     tools:context=".dangnhap"
 
     >
@@ -21,19 +21,19 @@
         android:fontFamily="@font/bangers"
         android:text="LOGIN NOW"
         android:textAlignment="center"
-        android:textColor="#f9f9f9"
+        android:textColor="@color/colorTextDangNhap"
         android:textSize="40dp"
         app:layout_constraintBottom_toTopOf="@+id/constraintLayout"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.701" />
+        app:layout_constraintVertical_bias="0.967" />
 
     <android.support.constraint.ConstraintLayout
         android:id="@+id/constraintLayout"
         android:layout_width="match_parent"
-        android:layout_height="188dp"
+        android:layout_height="189dp"
         android:layout_marginBottom="8dp"
         android:layout_marginTop="8dp"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -51,15 +51,12 @@
             android:layout_marginEnd="40dp"
             android:layout_marginStart="40dp"
             android:layout_marginTop="8dp"
-            android:background="@drawable/text_custom"
             android:drawableRight="@drawable/acount"
             android:hint="Email"
             android:inputType="textEmailAddress"
             android:textColorHint="#d3d5fd"
             android:textStyle="italic"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintEnd_toStartOf="@+id/chkRemember"
-            app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
@@ -70,7 +67,6 @@
             android:layout_marginEnd="40dp"
             android:layout_marginStart="40dp"
             android:layout_marginTop="8dp"
-            android:background="@drawable/text_custom"
             android:drawableRight="@drawable/password"
             android:ems="10"
             android:fontFamily="sans-serif"
@@ -83,51 +79,27 @@
             app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/txtLogInEmail"
-            app:layout_constraintVertical_bias="0.275" />
+            app:layout_constraintVertical_bias="0.149" />
 
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content">
-
-        </LinearLayout>
-
-        <CheckBox
-
-            android:id="@+id/chkRemember"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginEnd="8dp"
-            android:layout_marginStart="40dp"
-            android:layout_marginTop="8dp"
-            android:text="Remember me?"
-            android:textSize="15dp"
-            android:textColor="#f9f9f9"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.0"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/txtLogInPassword"
-            app:layout_constraintVertical_bias="0.0" />
 
         <TextView
-            android:id="@+id/textView6"
+            android:id="@+id/lbQuenMatKhau"
             android:layout_width="wrap_content"
             android:layout_height="27dp"
             android:layout_marginBottom="8dp"
             android:layout_marginEnd="8dp"
             android:layout_marginStart="8dp"
             android:layout_marginTop="8dp"
-            android:textColor="#f9f9f9"
             android:text="Quên mật khẩu?"
+            android:textColor="@color/colorTextDangNhap"
             android:textSize="15dp"
             android:textStyle="italic"
             app:layout_constraintBottom_toBottomOf="parent"
-
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.878"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/txtLogInPassword"
-            app:layout_constraintVertical_bias="0.833" />
+            app:layout_constraintVertical_bias="0.428" />
 
 
     </android.support.constraint.ConstraintLayout>
@@ -137,25 +109,39 @@
         android:id="@+id/btnLogin"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="8dp"
         android:layout_marginEnd="40dp"
         android:layout_marginStart="40dp"
-        android:layout_marginTop="8dp"
         android:layout_weight="1"
         android:background="@drawable/button_custom"
         android:fontFamily="@font/bangers"
-        android:text="SUBMIT"
-        android:textColor="#ffffff"
+        android:text="lOGIN"
+        android:textColor="#f2f7ff"
         android:textSize="25dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.529"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/constraintLayout"
-        app:layout_constraintVertical_bias="0.016">
+        app:layout_constraintVertical_bias="0.226">
 
     </Button>
 
+    <TextView
+        android:id="@+id/lbCreateAcount"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="8dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="20dp"
+        android:text="Bạn chưa có tài khoản? Tạo một tài khoản mới"
+        android:textAlignment="center"
+        android:textColor="#75cac3"
+
+        android:textSize="12dp"
+        android:textStyle="bold|italic"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/btnLogin" />
 
 
 </android.support.constraint.ConstraintLayout>

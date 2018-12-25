@@ -8,18 +8,18 @@
             android:id="@+id/nav_signIn"
             android:icon="@drawable/iconloign"
             android:title="Sign in" />
-        <item
-            android:id="@+id/nav_signUp"
-            android:icon="@drawable/icon_create"
-            android:title="Create new acount" />
-        <item
-            android:id="@+id/nav_infomation"
-            android:icon="@drawable/iconinfo"
-            android:title="Information" />
-        <item
-            android:id="@+id/nav_transaction"
-            android:icon="@drawable/icon_transaction"
-            android:title="Transaction" />
+        <!--<item-->
+            <!--android:id="@+id/nav_signUp"-->
+            <!--android:icon="@drawable/icon_create"-->
+            <!--android:title="Create new acount" />-->
+        <!--<item-->
+            <!--android:id="@+id/nav_infomation"-->
+            <!--android:icon="@drawable/iconinfo"-->
+            <!--android:title="Information" />-->
+        <!--<item-->
+            <!--android:id="@+id/nav_transaction"-->
+            <!--android:icon="@drawable/icon_transaction"-->
+            <!--android:title="Transaction" />-->
         <item
             android:id="@+id/nav_LogOut"
             android:icon="@drawable/logout"

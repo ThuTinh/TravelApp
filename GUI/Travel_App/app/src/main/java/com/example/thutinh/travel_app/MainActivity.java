@@ -1,8 +1,11 @@
 package com.example.thutinh.travel_app;
 
+import android.Manifest;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
+import android.provider.ContactsContract;
 import android.support.annotation.NonNull;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
@@ -28,6 +31,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 import android.widget.ViewFlipper;
 
+import com.bumptech.glide.Glide;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
@@ -38,44 +42,28 @@ import com.google.firebase.database.ValueEventListener;
 public class MainActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
 
-Button btnMienBac;
-Button btnMienTrung;
-Button btnMienNam;
-ImageView arr1;
-ImageView arr2;
-ImageView arr3;
-ViewFlipper flip1;
-ViewFlipper flip2;
-ViewFlipper flip3;
-    private FirebaseAuth mAuth;
-Animation animIn;
-Animation animOut;
+private Button btnMienBac;
+private Button btnMienTrung;
+private Button btnMienNam;
+private FirebaseAuth mAuth;
+private ImageView arr1;
+private ImageView arr2;
+private ImageView arr3;
+private ViewFlipper flip1;
+private ViewFlipper flip2;
+private ViewFlipper flip3;
+//private Animation animIn;
+//private Animation animOut;
+private TextView lbName;
+private  TextView lbEmail;
+private  ImageView imgPhoto;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         mAuth = FirebaseAuth.getInstance();
         setContentView(R.layout.activity_main);
-       // FirebaseDatabase database = FirebaseDatabase.getInstance();
-    //    DatabaseReference myRef = database.getReference();
-
-        //FirebaseDatabase.getInstance().getReference().child("ABC").push().setValue("XYZ");
-      //  myRef.child("XinChao").addValueEventListener(new ValueEventListener() {
-          //  @Override
-          //  public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-
-           //     String t= dataSnapshot.getValue(String.class);
-            //    Log.d("KetQua",t);
-
-
-         //   }
-
-        //    @Override
-          //  public void onCancelled(@NonNull DatabaseError databaseError) {
-           //     Log.w("Loi.........", "Failed to read value.", databaseError.toException());
-          //  }
-      //  });
-
 
 
         // CHuyển màn hình
@@ -132,6 +120,9 @@ Animation animOut;
             }
         });
 
+        //kiểm tra người dùng có đăng nhập chưa
+
+
         btnMienTrung.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -157,17 +148,18 @@ Animation animOut;
         });
 
 
-        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
+       Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
-        FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
-        fab.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
-                        .setAction("Action", null).show();
-            }
-        });
+//        FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
+//        fab.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View view) {
+//              Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
+//                      .setAction("Action", null).show();
+//
+//            }
+//        });
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
@@ -175,9 +167,30 @@ Animation animOut;
         drawer.addDrawerListener(toggle);
         toggle.syncState();
 
-        NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
-        navigationView.setNavigationItemSelectedListener(this);
 
+         final NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
+         View v = navigationView.getHeaderView(R.id.nav_view);
+
+        //lbName.setText("df");
+      //  lbEmail.setText("sdg");
+        if(mAuth.getCurrentUser()!=null)
+        {
+            View headerLayout =  navigationView.getHeaderView(0);
+            lbEmail = headerLayout.findViewById(R.id.lbProfileEmail);
+            imgPhoto = headerLayout.findViewById(R.id.imgProfile);
+            lbName = headerLayout.findViewById(R.id.lbProfileName);
+            lbName.setText(mAuth.getCurrentUser().getDisplayName());
+            lbEmail.setText(mAuth.getCurrentUser().getEmail());
+
+           // imgPhoto.setImageURI(mAuth.getCurrentUser().getPhotoUrl());
+           // Log.d("hinh123", mAuth.getCurrentUser().getPhotoUrl().toString());
+            //  Glide.with(MainActivity.this).load(mAuth.getCurrentUser().getPhotoUrl()).into(imgPhoto);
+        }
+
+
+// panel won't be null
+
+        navigationView.setNavigationItemSelectedListener(this);
 
         };
 
@@ -200,51 +213,82 @@ Animation animOut;
        // getMenuInflater().inflate(R.menu.main, menu);
        // return true;
    //}
+    private  void KiemTra(NavigationView navigationView)
+    {
+
+       // Toast.makeText(MainActivity.this, "co chạy vo khong?", Toast.LENGTH_SHORT).show();
+        Menu menu = navigationView.getMenu();
+        if(mAuth.getCurrentUser()==null)
+        {
+            menu.getItem(R.id.nav_LogOut).setVisible(true);
+            menu.getItem(R.id.nav_signIn).setVisible(false);
+
+        }
+        else
+        {
+            menu.getItem(R.id.nav_signIn).setVisible(true);
+            menu.getItem(R.id.nav_LogOut).setVisible(false);
+        }
+
+    }
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         // Handle action bar item clicks here. The action bar will
         // automatically handle clicks on the Home/Up button, so long
         // as you specify a parent activity in AndroidManifest.xml.
-        int id = item.getItemId();
-
-        //noinspection SimplifiableIfStatement
-        if (id == R.id.action_settings) {
-            return true;
-        }
+//        int id = item.getItemId();
+//
+//        //noinspection SimplifiableIfStatement
+//        if (id == R.id.action_settings) {
+//            return true;
+//        }
 
         return super.onOptionsItemSelected(item);
     }
+
 
     @SuppressWarnings("StatementWithEmptyBody")
     @Override
     public boolean onNavigationItemSelected(MenuItem item) {
         // Handle navigation view item clicks here.
+
         int id = item.getItemId();
         Intent it;
 
         if (id == R.id.nav_signIn) {
-            // Handle the camera action
-            it = new Intent(getApplicationContext(),dangnhap.class);
-            startActivity(it);
-        } else if (id == R.id.nav_signUp) {
-            it = new Intent(getApplicationContext(),dangki.class);
-            startActivity(it);
-        } else if (id == R.id.nav_infomation) {
-            it = new Intent(getApplicationContext(),listthongtin.class);
-            startActivity(it);
-        } else if (id == R.id.nav_transaction) {
+            if(mAuth.getCurrentUser()==null)
+            {
+                // Handle the camera action
+                it = new Intent(getApplicationContext(),dangnhap.class);
+                startActivity(it);
+            }
+            else
+            {
+                Toast.makeText(MainActivity.this, "Bạn đã đăng nhập", Toast.LENGTH_SHORT).show();
+            }
+
+//
+//        } else if (id == R.id.nav_signUp) {
+//            it = new Intent(getApplicationContext(),dangki.class);
+//            startActivity(it);
+//        } else if (id == R.id.nav_infomation) {
+//           // it = new Intent(getApplicationContext(),listthongtin.class);
+//           // startActivity(it);
+//        } else if (id == R.id.nav_transaction) {
           //  it = new Intent(getApplicationContext(),listTenTinh.class);
           //  startActivity(it);
 
         } else if (id == R.id.nav_share) {
 
 
+
         } else if (id == R.id.nav_send) {
 
         }else if(id == R.id.nav_LogOut){
           try {
-
+              if(mAuth.getCurrentUser()!=null)
+              {
                   AlertDialog.Builder dialog = new AlertDialog.Builder(MainActivity.this);
                   dialog.setTitle("Thông báo");
                   dialog.setMessage("Bạn có muốn đăng xuất không?");
@@ -259,23 +303,29 @@ Animation animOut;
                       @Override
                       public void onClick(DialogInterface dialog, int which) {
                           mAuth.signOut();
-                          Toast.makeText(MainActivity.this, "Log Out Susscess", Toast.LENGTH_SHORT).show();
+
+                          Toast.makeText(MainActivity.this, "Đăng xuất thành công.", Toast.LENGTH_SHORT).show();
                       }
                   });
-              AlertDialog alertDialog = dialog.create();
-              alertDialog.show();
+                  AlertDialog alertDialog = dialog.create();
+                  alertDialog.show();
+              }
+              else
+              {
+                  Toast.makeText(MainActivity.this, "Bạn đã đăng xuất, Tác vụ không được thực hiện",Toast.LENGTH_SHORT).show();
+              }
+
+
+
           }catch (Exception e)
           {
-              Toast.makeText(MainActivity.this, "Log Out fail", Toast.LENGTH_SHORT).show();
+              Toast.makeText(MainActivity.this, "Đăng xuất không thành công", Toast.LENGTH_SHORT).show();
           }
-
         }
-
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         drawer.closeDrawer(GravityCompat.START);
         return true;
     }
-
 
 }

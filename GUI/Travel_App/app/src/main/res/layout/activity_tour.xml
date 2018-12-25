@@ -1,0 +1,214 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".Tour">
+    <android.support.v4.widget.NestedScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+        <LinearLayout
+            android:orientation="vertical"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <technolifestyle.com.imageslider.FlipperLayout
+                android:id="@+id/flipTour"
+                android:layout_width="match_parent"
+                android:layout_height="200dp">
+
+            </technolifestyle.com.imageslider.FlipperLayout>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+                <LinearLayout
+
+                    android:layout_weight="1"
+                    android:orientation="vertical"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content">
+
+                    <ImageView
+                        android:layout_gravity="center"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:src="@drawable/phone"/>
+
+                    <TextView
+
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="Phone"
+                        android:id="@+id/lbTourPhone"
+                        android:textAlignment="center"
+                        />
+
+
+                </LinearLayout>
+                <LinearLayout
+
+                    android:layout_weight="1"
+                    android:orientation="vertical"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content">
+
+                    <ImageView
+                        android:layout_gravity="center"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:src="@drawable/facebook"/>
+
+                    <TextView
+                        android:id="@+id/lbTourFace"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:textAlignment="center"
+                        android:text="facbook"
+                        />
+
+                </LinearLayout>
+                <LinearLayout
+
+                    android:layout_weight="1"
+                    android:orientation="vertical"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content">
+
+                    <ImageView
+                        android:layout_gravity="center"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:src="@drawable/email"/>
+
+                    <TextView
+
+                        android:id="@+id/lbTourEmail"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:textAlignment="center"
+                        android:text="Email"
+                        />
+
+                </LinearLayout>
+
+            </LinearLayout>
+
+           <TextView
+
+               android:layout_width="match_parent"
+               android:layout_height="wrap_content"
+               android:text="Nội dung"
+               android:textColor="@color/colorPrimary"
+               android:textSize="25dp"
+               android:textAlignment="center"
+               android:id="@+id/lbTourNoiDung"/>
+
+            <TextView
+                android:layout_marginLeft="10dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Thời gian" />
+            <TextView
+                android:layout_marginLeft="10dp"
+                android:id="@+id/lbTourTGTu"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="từ: "/>
+            <TextView
+                android:layout_marginLeft="10dp"
+                android:id="@+id/lbTourTGDen"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Đến:"/>
+            <TextView
+                android:layout_marginLeft="10dp"
+                android:id="@+id/lbTourGia"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Giá:"/>
+
+            <TextView
+                android:textColor="#f12d2d"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Thông Tin tour"
+                android:textAlignment="center"
+                android:textSize="24sp"></TextView>
+            <LinearLayout
+                android:paddingLeft="50dp"
+                android:orientation="vertical"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+                <TextView
+                    android:textColor="#f79f24"
+                    android:id="@+id/lbTourDiaDiemDen"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Các địa điểm đến"/>
+                <TextView
+                    android:textColor="#f79f24"
+                    android:id="@+id/lbTourMaTour"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Mã tour"/>
+                <TextView
+                    android:textColor="#f79f24"
+                    android:id="@+id/lbTourSoLuongConLai"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Số lượng còn lại"/>
+                <TextView
+                    android:textColor="#f79f24"
+                    android:id="@+id/lbKhoiHanhTai"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Khởi hành tại"/>
+
+            </LinearLayout>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Danh sách lịch trình" />
+            <android.support.v7.widget.RecyclerView
+                android:id="@+id/rvListChiTietTour"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+            </android.support.v7.widget.RecyclerView>
+
+            <TextView
+                android:id="@+id/lbTourCmt"
+                android:layout_width="wrap_content"
+                android:textSize="25dp"
+                android:layout_height="wrap_content"
+                android:text="Bình Luận" />
+            <android.support.v7.widget.RecyclerView
+                android:id="@+id/rvTourCmt"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"></android.support.v7.widget.RecyclerView>
+
+            <EditText
+                android:layout_marginLeft="10dp"
+                android:hint="Bình luận..."
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/txtTourCmt"/>
+
+            <Button
+                android:id="@+id/btnTourSave"
+                android:layout_width="101dp"
+                android:layout_height="29dp"
+                android:layout_margin="10dp"
+                android:layout_marginBottom="10dp"
+                android:background="@drawable/button_custom"
+                android:text="Save"
+                android:textAllCaps="false"
+                android:textColor="#ffffff" />
+        </LinearLayout>
+
+    </android.support.v4.widget.NestedScrollView>
+
+</LinearLayout>

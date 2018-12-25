@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.v7.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    xmlns:card_view="http://schemas.android.com/apk/res-auto"
+    card_view:cardCornerRadius="10dp"
+    android:layout_margin="5dp"
+    card_view:cardBackgroundColor="#a7d7c5"
+    android:id="@+id/cardListTour"
+    android:layout_height="wrap_content">
+    <LinearLayout
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <ImageView
+            android:scaleType="centerCrop"
+            android:id="@+id/imgTourAnh"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            />
+        <LinearLayout
+            android:paddingLeft="20dp"
+            android:orientation="vertical"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+            <TextView
+                android:textSize="20dp"
+                android:id="@+id/lbListTourNoiDung"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+            <TextView
+                android:id="@+id/lbListTourKhoiHanh"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+            <TextView
+                android:id="@+id/lbLisstTourdsDiaDiem"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="list danh sách"/>
+        </LinearLayout>
+
+    </LinearLayout>
+
+</android.support.v7.widget.CardView>

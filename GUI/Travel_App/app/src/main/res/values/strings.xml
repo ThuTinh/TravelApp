@@ -6,6 +6,8 @@
     <string name="nav_header_subtitle">android.studio@android.com</string>
     <string name="nav_header_desc">Navigation header</string>
     <string name="action_settings">Settings</string>
+    <string name="api_key">AIzaSyBTPa7-CAsOtnQpdHMdZ_IsXt3gNTA6wX8</string>
+    <!--<string name="api_key">AIzaSyC0jspe5HX-_e5p8jT-LAJ5Ookbyx_jyFY</string>-->
 
     <string name="next">NEXT</string>
     <string name="skip">SKIP</string>
@@ -27,6 +29,9 @@
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="title_activity_tab__dich_vu__thong_tin">tab_DichVu_ThongTin</string>
+    <string name="title_activity_map">Map</string>
+    <string name="title_activity_tab_dich_vu_va_thong_tin">TabDichVuVaThongTin</string>
+    <string name="title_activity_map_client">Map</string>
 
 
 </resources>

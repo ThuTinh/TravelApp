@@ -1,0 +1,170 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:orientation="vertical"
+    android:layout_height="match_parent"
+    tools:context=".ChiTietMonAn">
+
+    <android.support.v4.widget.NestedScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+        <LinearLayout
+            android:orientation="vertical"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+
+            <!--<technolifestyle.com.imageslider.FlipperLayout-->
+                <!--android:id="@+id/flipAnUongChiTiet"-->
+                <!--android:layout_width="match_parent"-->
+                <!--android:layout_height="200dp"></technolifestyle.com.imageslider.FlipperLayout>-->
+<ImageView
+    android:layout_width="match_parent"
+    android:layout_height="200dp"
+    android:id="@+id/imgChiTietMonAn"/>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:orientation="horizontal"
+            android:layout_marginBottom="10dp"
+            android:layout_height="wrap_content">
+            <ImageView
+                android:layout_width="20dp"
+                android:layout_height="30dp"
+                android:src="@drawable/map" />
+            <TextView
+                android:textColor="#a20e0e"
+                android:id="@+id/lbChiTietAnUongViTri"
+                android:layout_marginTop="10dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Địa điểm"/>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+            <LinearLayout
+
+                android:layout_weight="1"
+                android:orientation="vertical"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content">
+
+                <ImageView
+                    android:layout_gravity="center"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:src="@drawable/phone"/>
+
+                <TextView
+
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Phone"
+                    android:id="@+id/lbChiTietAnUongPhone"
+                    android:textAlignment="center"
+                    />
+            </LinearLayout>
+            <LinearLayout
+
+                android:layout_weight="1"
+                android:orientation="vertical"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content">
+
+                <ImageView
+                    android:layout_gravity="center"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:src="@drawable/facebook"/>
+
+                <TextView
+                    android:id="@+id/lbChiTietAnUongFace"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:textAlignment="center"
+                    android:text="facbook"
+                    />
+
+            </LinearLayout>
+            <LinearLayout
+
+                android:layout_weight="1"
+                android:orientation="vertical"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content">
+
+                <ImageView
+                    android:layout_gravity="center"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:src="@drawable/email"/>
+
+                <TextView
+
+                    android:id="@+id/lbChiTietAnUongEmail"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:textAlignment="center"
+                    android:text="Email"
+                    />
+
+            </LinearLayout>
+        </LinearLayout>
+
+            <TextView
+                android:id="@+id/lbAnOngChiTietTen"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Tên"
+                android:textAlignment="center"
+                android:textSize="30dp" />
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/lbChiTietAnUongNoiDung" />
+
+        <android.support.v7.widget.RecyclerView
+            android:id="@+id/rvListChiTietAnUong"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+        </android.support.v7.widget.RecyclerView>
+
+        <TextView
+            android:id="@+id/lbAnUongChiTietCmt"
+            android:layout_width="wrap_content"
+            android:textSize="25dp"
+            android:layout_height="wrap_content"
+            android:text="Bình Luận" />
+        <android.support.v7.widget.RecyclerView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/rvChiTietAnUongCmt">
+        </android.support.v7.widget.RecyclerView>
+
+        <EditText
+            android:layout_marginLeft="10dp"
+            android:hint="Bình luận..."
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/txtChiTietAnUongCmt"/>
+
+            <Button
+                android:id="@+id/btnChiTietAnUongSave"
+                android:layout_width="101dp"
+                android:layout_height="29dp"
+                android:layout_margin="10dp"
+                android:layout_marginBottom="10dp"
+                android:background="@drawable/button_custom"
+                android:text="Save"
+                android:textAllCaps="false"
+                android:textColor="#ffffff" />
+        </LinearLayout>
+
+    </android.support.v4.widget.NestedScrollView>
+
+</LinearLayout>
