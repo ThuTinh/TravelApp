@@ -1,5 +1,5 @@
 <h1 align="center"> Du lịch Việt Nam</h1>
-<p>Ứng dụng cho phép mỗi người dùng khi có 1 tài khoản có thể thêm thông tin địa danh, các dịch vụ đến cho mọi người biết</p>
+<p>Dựa trên Wikipedia là mỗi người sẽ có một tài khoản. Và một người nào đó biết rõ về vấn đề đó, sẽ viết bài và đăng bài cho tất cả mọi người điều biết. Đây cũng là một nguồn thông tin cung cấp cho tất cả mọi người. Đồng thời nhóm cũng thấy khó khăn về việc tìm review tất cả các địa điểm du lịch nổi tiếng và không nổi tiếng trên các trang mạng xã hội và các dịch vụ kèm theo. Nhóm dựa vào đó mà tạo nên một cái áp du lịch Việt Nam. Mà mỗi người sẽ có một tài khoản và tất cả mọi người đều có thể tạo ra một bài viết về một địa điểm du lịch mà mình biết đến để cung cấp thông tin đến cho mọi người. Đồng thời app còn hỗ trợ việc đăng bài quảng bá các địa điểm ăn uống nổi tiếng, các khách sạn, homestay, nhà ở, thông tin các tour đến với khách du lịch.</p>
 
 # Chức năng chính
 -	Tạo tài khoản
