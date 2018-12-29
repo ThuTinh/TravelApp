@@ -1,8 +1,4 @@
 
-<p align="center">
- 
-  <img src="C:\Users\Thu Tinh\Desktop\New folder\050a754e2e0757b598c853ddf3d6500c.jpg" width="350" alt="accessibility text">
-</p>
 
 
 <h1 align="center"> Du lịch Việt Nam</h1>
