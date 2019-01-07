@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context=".Tour">
+    tools:context=".Activity.Tour">
     <android.support.v4.widget.NestedScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent">
@@ -38,12 +38,12 @@
 
                     <TextView
 
+                        android:id="@+id/lbTourPhone"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:text="Phone"
-                        android:id="@+id/lbTourPhone"
                         android:textAlignment="center"
-                        />
+                        android:textColor="#f12d2d" />
 
 
                 </LinearLayout>
@@ -64,9 +64,9 @@
                         android:id="@+id/lbTourFace"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:textAlignment="center"
                         android:text="facbook"
-                        />
+                        android:textAlignment="center"
+                        android:textColor="#f12d2d" />
 
                 </LinearLayout>
                 <LinearLayout
@@ -87,84 +87,209 @@
                         android:id="@+id/lbTourEmail"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:textAlignment="center"
                         android:text="Email"
-                        />
+                        android:textAlignment="center"
+                        android:textColor="#f12d2d" />
 
                 </LinearLayout>
 
             </LinearLayout>
 
-           <TextView
-
-               android:layout_width="match_parent"
-               android:layout_height="wrap_content"
-               android:text="Nội dung"
-               android:textColor="@color/colorPrimary"
-               android:textSize="25dp"
-               android:textAlignment="center"
-               android:id="@+id/lbTourNoiDung"/>
-
             <TextView
-                android:layout_marginLeft="10dp"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Thời gian" />
-            <TextView
-                android:layout_marginLeft="10dp"
-                android:id="@+id/lbTourTGTu"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="từ: "/>
-            <TextView
-                android:layout_marginLeft="10dp"
-                android:id="@+id/lbTourTGDen"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="Đến:"/>
-            <TextView
-                android:layout_marginLeft="10dp"
-                android:id="@+id/lbTourGia"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="Giá:"/>
-
-            <TextView
-                android:textColor="#f12d2d"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
                 android:text="Thông Tin tour"
                 android:textAlignment="center"
-                android:textSize="24sp"></TextView>
+                android:textColor="#f79f24"
+                android:textSize="24sp"
+                android:textStyle="bold"></TextView>
             <LinearLayout
-                android:paddingLeft="50dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginTop="20dp"
+                    android:text="Thời gian"
+                    android:textColor="#1d5464"
+                    android:textSize="18sp"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:id="@+id/lbTourThoiGian"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginTop="20dp"
+                    android:text="Thời gian"
+                    android:textSize="18sp" />
+
+            </LinearLayout>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="10dp"
+                    android:text="Thời gian từ: "
+                    android:textColor="#1d5464"
+                    android:textSize="18sp"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:id="@+id/lbTourTGTu"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="10dp"
+                    android:text="từ: "
+                    android:textSize="18sp" />
+
+            </LinearLayout>
+           <LinearLayout
+               android:layout_width="match_parent"
+               android:layout_height="wrap_content"
+               android:orientation="horizontal">
+
+               <TextView
+                   android:layout_width="wrap_content"
+                   android:layout_height="wrap_content"
+                   android:layout_marginLeft="10dp"
+                   android:text="Đến:"
+                   android:textColor="#1d5464"
+                   android:textSize="18sp"
+                   android:textStyle="bold" />
+
+               <TextView
+                   android:id="@+id/lbTourTGDen"
+                   android:layout_width="match_parent"
+                   android:layout_height="wrap_content"
+                   android:layout_marginLeft="10dp"
+                   android:text="Đến:"
+                   android:textSize="18sp" />
+
+           </LinearLayout>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="10dp"
+                    android:text="Giá tour:"
+                    android:textColor="#1d5464"
+                    android:textSize="18sp"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:id="@+id/lbTourGia"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="10dp"
+                    android:text="Giá:"
+                    android:textSize="18sp" />
+
+            </LinearLayout>
+
+
+            <LinearLayout
+                android:paddingLeft="10dp"
                 android:orientation="vertical"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content">
-                <TextView
-                    android:textColor="#f79f24"
-                    android:id="@+id/lbTourDiaDiemDen"
+                <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="Các địa điểm đến"/>
-                <TextView
-                    android:textColor="#f79f24"
-                    android:id="@+id/lbTourMaTour"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Các địa điểm đến:"
+                        android:textColor="#1d5464"
+                        android:textSize="18sp"
+                        android:textStyle="bold" />
+
+                    <TextView
+                        android:id="@+id/lbTourDiaDiemDen"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="Các địa điểm đến"
+                        android:textSize="18sp" />
+
+                </LinearLayout>
+
+             <LinearLayout
+                 android:layout_width="match_parent"
+                 android:layout_height="wrap_content"
+                 android:orientation="horizontal">
+
+                 <TextView
+                     android:layout_width="wrap_content"
+                     android:layout_height="wrap_content"
+                     android:text="Mã tour:"
+                     android:textColor="#1d5464"
+                     android:textSize="18sp"
+                     android:textStyle="bold" />
+
+                 <TextView
+                     android:id="@+id/lbTourMaTour"
+                     android:layout_width="match_parent"
+                     android:layout_height="wrap_content"
+                     android:text="Mã tour"
+                     android:textSize="18sp" />
+
+             </LinearLayout>
+             <LinearLayout
+                 android:layout_width="match_parent"
+                 android:layout_height="wrap_content"
+                 android:orientation="horizontal">
+
+                 <TextView
+                     android:layout_width="wrap_content"
+                     android:layout_height="wrap_content"
+                     android:text="Số lượng còn lại:"
+                     android:textColor="#1d5464"
+                     android:textSize="18sp"
+                     android:textStyle="bold" />
+
+                 <TextView
+                     android:id="@+id/lbTourSoLuongConLai"
+                     android:layout_width="match_parent"
+                     android:layout_height="wrap_content"
+                     android:text="Số lượng còn lại"
+                     android:textSize="18sp" />
+
+             </LinearLayout>
+                <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="Mã tour"/>
-                <TextView
-                    android:textColor="#f79f24"
-                    android:id="@+id/lbTourSoLuongConLai"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="Số lượng còn lại"/>
-                <TextView
-                    android:textColor="#f79f24"
-                    android:id="@+id/lbKhoiHanhTai"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="Khởi hành tại"/>
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Khởi hành tại:"
+                        android:textColor="#1d5464"
+                        android:textSize="18sp"
+                        android:textStyle="bold" />
+
+                    <TextView
+                        android:id="@+id/lbKhoiHanhTai"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="Khởi hành tại"
+                        android:textSize="18sp" />
+
+                </LinearLayout>
 
             </LinearLayout>
 
@@ -180,15 +305,33 @@
             </android.support.v7.widget.RecyclerView>
 
             <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Truy cập vào link bên dưới để biết thêm thông tin chi tiết và tiến hành đặt tour"
+                android:textColor="#f79f24"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/lbTourLink"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="link"
+                android:textColor="#f12d2d"
+                android:textStyle="italic" />
+
+            <TextView
                 android:id="@+id/lbTourCmt"
                 android:layout_width="wrap_content"
-                android:textSize="25dp"
                 android:layout_height="wrap_content"
-                android:text="Bình Luận" />
+                android:text="Bình Luận"
+                android:textColor="#1d5464"
+                android:textSize="24sp" />
             <android.support.v7.widget.RecyclerView
                 android:id="@+id/rvTourCmt"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"></android.support.v7.widget.RecyclerView>
+
+
 
             <EditText
                 android:layout_marginLeft="10dp"

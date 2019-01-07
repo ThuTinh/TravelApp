@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     android:background="@color/colorbackgrounddangnhap"
-    tools:context=".AddThongTinDiaDanh">
+    tools:context=".Activity.AddThongTinDiaDanh">
 
 
     <android.support.v4.widget.NestedScrollView
@@ -24,7 +24,8 @@
                 android:layout_height="wrap_content"
                 android:text="Thông tin địa danh"
                 android:textAlignment="center"
-                android:textSize="30dp"/>
+                android:textColor="#679186"
+                android:textSize="30dp" />
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content">
@@ -34,7 +35,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="16dp"
-                    android:fontFamily="@font/amita"
+                    android:fontFamily="sans-serif"
                     android:text="Tên địa danh:"
                     android:textSize="18sp"
                     app:layout_constraintTop_toTopOf="parent"
@@ -78,51 +79,42 @@
                 android:text="Thêm hình ảnh mô tả địa danh: "
                 android:textSize="18sp" />
             <android.support.v7.widget.RecyclerView
+                android:background="#faf9f9"
                 android:id="@+id/rvAddAnh"
                 android:layout_width="match_parent"
                 android:layout_height="100dp" />
 
-            <android.support.constraint.ConstraintLayout
-                android:layout_marginTop="10dp"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginEnd="16dp"
-                android:layout_marginRight="16dp"
-                app:layout_constraintEnd_toEndOf="parent">
+
+
+                <!--<Button-->
+                    <!--android:id="@+id/btnTake"-->
+                    <!--android:layout_width="112dp"-->
+                    <!--android:layout_height="33dp"-->
+                    <!--android:layout_marginEnd="8dp"-->
+                    <!--android:layout_marginStart="40dp"-->
+                    <!--android:background="@drawable/button_custom"-->
+                    <!--android:text="Take a Picture"-->
+                    <!--android:textAllCaps="false"-->
+                    <!--android:textColor="#ffffff"-->
+                    <!--android:textSize="12sp"-->
+                    <!--app:layout_constraintBottom_toBottomOf="parent"-->
+                    <!--app:layout_constraintEnd_toStartOf="@+id/btnChoose"-->
+                    <!--app:layout_constraintStart_toStartOf="parent"-->
+                    <!--app:layout_constraintTop_toTopOf="parent"-->
+                    <!--app:layout_constraintVertical_bias="0.0" />-->
 
                 <Button
-                    android:id="@+id/btnTake"
-                    android:layout_width="112dp"
-                    android:layout_height="33dp"
-                    android:layout_marginEnd="8dp"
-                    android:layout_marginStart="40dp"
-                    android:background="@drawable/button_custom"
-                    android:text="Take a Picture"
-                    android:textAllCaps="false"
-                    android:textColor="#ffffff"
-                    android:textSize="12sp"
-                    app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintEnd_toStartOf="@+id/btnChoose"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="parent"
-                    app:layout_constraintVertical_bias="0.0" />
-
-                <Button
+                    android:layout_marginTop="10dp"
+                    android:layout_marginLeft="10dp"
                     android:id="@+id/btnChoose"
                     android:layout_width="118dp"
                     android:layout_height="33dp"
-                    android:layout_marginEnd="40dp"
                     android:background="@drawable/button_custom"
                     android:text="Choose from file"
                     android:textAllCaps="false"
                     android:textColor="#ffffff"
-                    android:textSize="12sp"
-                    app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintTop_toTopOf="parent"
-                    app:layout_constraintVertical_bias="0.0" />
+                    android:textSize="12sp" />
 
-            </android.support.constraint.ConstraintLayout>
 
             <TextView
                 android:layout_width="match_parent"

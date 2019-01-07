@@ -7,7 +7,7 @@
     android:layout_height="match_parent"
     android:background="#ebebe3"
     android:orientation="horizontal"
-    tools:context=".listthongtin">
+    tools:context=".Activity.listthongtin">
 
 
     <ProgressBar

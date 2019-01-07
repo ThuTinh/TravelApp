@@ -1,4 +1,4 @@
-package com.example.thutinh.travel_app;
+package com.example.thutinh.travel_app.Activity;
 
 import android.content.Intent;
 import android.graphics.Color;
@@ -7,10 +7,10 @@ import android.location.Geocoder;
 import android.net.Uri;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.StaggeredGridLayoutManager;
+import android.text.TextUtils;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -25,7 +25,8 @@ import com.example.thutinh.travel_app.Adapter.CommentAdapter;
 import com.example.thutinh.travel_app.Adapter.ThongTinMonAnAdapter;
 import com.example.thutinh.travel_app.DTO.Comment_class;
 import com.example.thutinh.travel_app.DTO.DanhSachAnUong;
-import com.example.thutinh.travel_app.DTO.ThongTinMonAn;
+import com.example.thutinh.travel_app.MainActivity;
+import com.example.thutinh.travel_app.R;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DatabaseReference;
@@ -89,8 +90,6 @@ public class ChiTietMonAn extends AppCompatActivity {
             rvListChiTietAnUong.setLayoutManager(gridLayoutManager);
             rvListChiTietAnUong.setAdapter(thongTinMonAnAdapter);
             thongTinMonAnAdapter.notifyDataSetChanged();
-
-
         }
         if(item.getListCmt()!=null)
         {
@@ -100,6 +99,21 @@ public class ChiTietMonAn extends AppCompatActivity {
             rvChiTietAnUongCmt.setLayoutManager(layoutManager);
             lbAnUongChiTietCmt.setText("Bình Luận ("+item.getListCmt().size()+")");
         }
+        lbChiTietAnUongPhone.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                String phone = lbChiTietAnUongPhone.getText().toString();
+                if(!TextUtils.isEmpty(phone))
+                {
+                    String dial = "tel:" + phone;
+                    startActivity(new Intent(Intent.ACTION_DIAL, Uri.parse(dial)));
+                }
+                else
+                {
+                    Toast.makeText(ChiTietMonAn.this, "Số điện thoại không phù hợp", Toast.LENGTH_SHORT).show();
+                }
+            }
+        });
         btnChiTietAnUongSave.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -162,6 +176,7 @@ public class ChiTietMonAn extends AppCompatActivity {
         if (item.getNguoiTao().equals(user.getEmail())) {
             getMenuInflater().inflate(R.menu.menu_update, menu);
         }
+        getMenuInflater().inflate(R.menu.menu_home, menu);
 
         return super.onCreateOptionsMenu(menu);
     }
@@ -181,6 +196,10 @@ public class ChiTietMonAn extends AppCompatActivity {
                 bSend.putString("Edit", "1");
                 it.putExtras(bSend);
                 startActivity(it);
+                return  true;
+            case  R.id.MenuHome:
+                Intent it1 = new Intent(ChiTietMonAn.this, MainActivity.class);
+                startActivity(it1);
 
             default:
                 break;

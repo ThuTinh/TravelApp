@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:orientation="vertical"
     android:layout_height="match_parent"
-    tools:context=".AddAnUong">
+    tools:context=".Activity.AddAnUong">
     <android.support.v4.widget.NestedScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent">
@@ -31,12 +31,15 @@
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="Thêm thông tin chi tiết món ăn" />
+                    android:text="Thêm thông tin chi tiết món ăn"
+                    android:textSize="18sp"
+                    android:textStyle="bold" />
 
                 <ImageView
                     android:id="@+id/imgAddSanPham"
                     android:layout_width="100dp"
                     android:layout_height="100dp"
+                    android:src="@drawable/noimg"
                     android:scaleType="centerCrop" />
 
                 <Button
@@ -125,7 +128,7 @@
                 android:layout_marginTop="20dp"
                 android:id="@+id/linerlayout"
                 android:orientation="vertical"
-                android:background="#e8e2db"
+                android:background="#c8d9eb"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent">
 
@@ -141,11 +144,12 @@
                     android:orientation="horizontal"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content">
+
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="Tên nhà cung cấp"
-                        />
+                        android:textSize="18sp" />
                     <EditText
                         android:id="@+id/txtAnUongTenNhaCungCap"
                         android:layout_width="match_parent"
@@ -158,11 +162,12 @@
                     android:orientation="horizontal"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content">
+
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="Phone"
-                        />
+                        android:textSize="18sp" />
                     <EditText
                         android:id="@+id/txtAnUongPhone"
                         android:layout_width="match_parent"
@@ -174,11 +179,12 @@
                     android:orientation="horizontal"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content">
+
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="Email"
-                        />
+                        android:textSize="18sp" />
                     <EditText
                         android:id="@+id/txtAnUongEmail"
                         android:layout_width="match_parent"
@@ -190,11 +196,12 @@
                     android:orientation="horizontal"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content">
+
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="Facebook"
-                        />
+                        android:textSize="18sp" />
                     <EditText
                         android:id="@+id/txtAnUongFacebook"
                         android:layout_width="match_parent"
@@ -206,30 +213,33 @@
                     android:orientation="horizontal"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content">
+
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="vị trí"
-                        />
+                        android:textSize="18sp" />
                     <EditText
                         android:id="@+id/txtAnUongViTri"
-                        android:layout_width="40dp"
+                        android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         />
-                   <fragment
-                       android:id="@+id/txtPlaceAutocomplete"
-                       android:name="com.google.android.gms.location.places.ui.PlaceAutocompleteFragment"
-                       android:layout_width="match_parent"
-                       android:layout_height="30dp">
+                   <!--<fragment-->
+                       <!--android:id="@+id/txtPlaceAutocomplete"-->
+                       <!--android:name="com.google.android.gms.location.places.ui.PlaceAutocompleteFragment"-->
+                       <!--android:layout_width="match_parent"-->
+                       <!--android:layout_height="30dp">-->
 
-                   </fragment>
+                   <!--</fragment>-->
 
                 </LinearLayout>
+
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:textAlignment="center"
-                    android:text="Nội Dung"/>
+                    android:lineSpacingExtra="18sp"
+                    android:text="Nội Dung"
+                    android:textAlignment="center" />
 
                 <EditText
                     android:layout_width="match_parent"
@@ -245,7 +255,8 @@
                     <TextView
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:text="Thêm hình để mô tả quán ăn"/>
+                        android:text="Thêm hình để mô tả quán ăn"
+                        android:textSize="18sp" />
                     <ImageView
                         android:id="@+id/imgAnUong"
                         android:layout_width="120dp"

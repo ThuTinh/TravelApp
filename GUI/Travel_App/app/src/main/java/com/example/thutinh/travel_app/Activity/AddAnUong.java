@@ -1,8 +1,7 @@
-package com.example.thutinh.travel_app;
+package com.example.thutinh.travel_app.Activity;
 
 import android.content.Intent;
 import android.graphics.Bitmap;
-import android.media.Image;
 import android.net.Uri;
 import android.provider.MediaStore;
 import android.support.annotation.NonNull;
@@ -24,9 +23,9 @@ import android.widget.Toast;
 import com.bumptech.glide.Glide;
 import com.example.thutinh.travel_app.Adapter.ThongTinMonAnAdapter;
 import com.example.thutinh.travel_app.DTO.DanhSachAnUong;
-import com.example.thutinh.travel_app.DTO.Home;
 import com.example.thutinh.travel_app.DTO.ThongTinMonAn;
-import com.google.android.gms.location.places.ui.PlaceAutocompleteFragment;
+import com.example.thutinh.travel_app.MainActivity;
+import com.example.thutinh.travel_app.R;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
@@ -58,7 +57,7 @@ public class AddAnUong extends AppCompatActivity {
     private DanhSachAnUong item;
     private List<ThongTinMonAn> listMonAn;
     private ThongTinMonAnAdapter thongTinMonAnAdapter ;
-    PlaceAutocompleteFragment placeAutocomplete;
+   // PlaceAutocompleteFragment placeAutocomplete;
     private EditText txtAddsanPhamTen,txtAddSanPhamGia;
     private  Button btnAddSanPhamChoose,btnAddSanPhamThem;
     ImageView imgSanPham ;
@@ -185,7 +184,10 @@ public class AddAnUong extends AppCompatActivity {
     }
 
     public boolean onCreateOptionsMenu(Menu menu) {
+
         getMenuInflater().inflate(R.menu.menu_add_thong_tin, menu);
+        getMenuInflater().inflate(R.menu.menu_home, menu);
+
         return super.onCreateOptionsMenu(menu);
     }
 
@@ -198,6 +200,11 @@ public class AddAnUong extends AppCompatActivity {
         if(item.getItemId()== android.R.id.home) {
 
             onBackPressed();
+        }
+        if(item.getItemId()==R.id.MenuHome)
+        {
+            Intent it = new Intent(AddAnUong.this, MainActivity.class);
+            startActivity(it);
         }
         return super.onOptionsItemSelected(item);
     }
@@ -215,7 +222,7 @@ public class AddAnUong extends AppCompatActivity {
         rvDanhMucCacSanPham = (RecyclerView)findViewById(R.id.rvDanhMucCacSanPham);
         txtAddAnUongNoiDung = (EditText)findViewById(R.id.txtAddAnUongNoiDung);
         linearLayout = (LinearLayout)findViewById(R.id.linerlayout);
-        placeAutocomplete = (PlaceAutocompleteFragment)getFragmentManager().findFragmentById(R.id.txtAutoComplacete);
+      //  placeAutocomplete = (PlaceAutocompleteFragment)getFragmentManager().findFragmentById(R.id.txtAutoComplacete);
         txtAddsanPhamTen = (EditText)findViewById(R.id.txtAddsanPhamTen);
         txtAddSanPhamGia = (EditText)findViewById(R.id.txtAddSanPhamGia);
          btnAddSanPhamChoose = (Button)findViewById(R.id.btnAddSanPhamChoose);
@@ -234,7 +241,7 @@ public class AddAnUong extends AppCompatActivity {
         noiDung = txtAddAnUongNoiDung.getText().toString().trim();
         phone = txtAnUongPhone.getText().toString().trim();
 
-       if(tenNhaCungCap.length()==0||face.length()==0||email.length()==0||viTri.length()==0 ||phone.length()==0)
+       if(tenNhaCungCap.length()==0||viTri.length()==0 ||phone.length()==0 ||noiDung.length()==0)
 
             Toast.makeText(AddAnUong.this, "Nội dung cũng cấp chưa đầy đủ.", Toast.LENGTH_SHORT).show();
         else

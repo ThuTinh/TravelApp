@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:orientation="vertical"
     android:layout_height="match_parent"
-    tools:context=".ChiTietMonAn">
+    tools:context=".Activity.ChiTietMonAn">
 
     <android.support.v4.widget.NestedScrollView
         android:layout_width="match_parent"
@@ -33,13 +33,14 @@
                 android:layout_width="20dp"
                 android:layout_height="30dp"
                 android:src="@drawable/map" />
+
             <TextView
-                android:textColor="#a20e0e"
                 android:id="@+id/lbChiTietAnUongViTri"
-                android:layout_marginTop="10dp"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Địa điểm"/>
+                android:layout_marginTop="10dp"
+                android:text="Địa điểm"
+                android:textColor="#f12d2d" />
 
         </LinearLayout>
 
@@ -61,12 +62,12 @@
 
                 <TextView
 
+                    android:id="@+id/lbChiTietAnUongPhone"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:text="Phone"
-                    android:id="@+id/lbChiTietAnUongPhone"
                     android:textAlignment="center"
-                    />
+                    android:textColor="#f12d2d" />
             </LinearLayout>
             <LinearLayout
 
@@ -85,9 +86,9 @@
                     android:id="@+id/lbChiTietAnUongFace"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:textAlignment="center"
                     android:text="facbook"
-                    />
+                    android:textAlignment="center"
+                    android:textColor="#f12d2d" />
 
             </LinearLayout>
             <LinearLayout
@@ -108,9 +109,9 @@
                     android:id="@+id/lbChiTietAnUongEmail"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:textAlignment="center"
                     android:text="Email"
-                    />
+                    android:textAlignment="center"
+                    android:textColor="#f12d2d" />
 
             </LinearLayout>
         </LinearLayout>
@@ -121,11 +122,15 @@
                 android:layout_height="wrap_content"
                 android:text="Tên"
                 android:textAlignment="center"
-                android:textSize="30dp" />
+                android:textColor="#f05a28"
+                android:textSize="30dp"
+                android:textStyle="bold" />
+
             <TextView
+                android:id="@+id/lbChiTietAnUongNoiDung"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:id="@+id/lbChiTietAnUongNoiDung" />
+                android:textSize="18sp" />
 
         <android.support.v7.widget.RecyclerView
             android:id="@+id/rvListChiTietAnUong"

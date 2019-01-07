@@ -1,35 +1,33 @@
-package com.example.thutinh.travel_app;
+package com.example.thutinh.travel_app.Activity;
 
+import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.net.ConnectivityManager;
+import android.net.NetworkInfo;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
-import android.support.constraint.solver.Cache;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
-import android.support.v7.widget.SearchView;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
-import android.widget.AdapterView;
-import android.widget.ListView;
 import android.widget.Toast;
 
-import com.example.thutinh.travel_app.Adapter.CommentAdapter;
 import com.example.thutinh.travel_app.Adapter.listmota_adapter;
 import com.example.thutinh.travel_app.DTO.MoTaChiTiet_class;
+import com.example.thutinh.travel_app.MainActivity;
+import com.example.thutinh.travel_app.R;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.ChildEventListener;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
-import com.google.firebase.database.Query;
-import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -46,13 +44,12 @@ public class listthongtin extends AppCompatActivity {
     private DatabaseReference myRef;
     public String tenMien,tenTinh;
     private  String ga;
-
     //FirebaseDatabase.getInstance().getReference().child("ABC").push().setValue("XYZ");
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         // ket noi vơi firebase
-
         database = FirebaseDatabase.getInstance();
         myRef = database.getReference();
         arrmota = new ArrayList<>();
@@ -64,25 +61,21 @@ public class listthongtin extends AppCompatActivity {
         tenTinh = bl.getString("TenTinh");
         blSend = new Bundle();
         rvThongTin = (RecyclerView) findViewById(R.id.rvthongtin);
-        getSupportActionBar().setTitle(tenTinh+">fList địa điểm");
-
+        getSupportActionBar().setTitle(tenTinh+">List địa điểm");
         getData();
 
-        adapter = new listmota_adapter(arrmota,listthongtin.this, tenMien, tenTinh);
-        Log.d("111", arrmota.size()+"");
-         rvThongTin.setAdapter(adapter);
-        //su kien click vao item cua lítView
+            adapter = new listmota_adapter(arrmota,listthongtin.this, tenMien, tenTinh);
+            Log.d("111", arrmota.size()+"");
+            rvThongTin.setAdapter(adapter);
+            //su kien click vao item cua lítView
 
-       rvThongTin.setAdapter(adapter);
-        LinearLayoutManager layoutManager = new LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false);
-        rvThongTin.setLayoutManager(layoutManager);
+            rvThongTin.setAdapter(adapter);
+            LinearLayoutManager layoutManager = new LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false);
+            rvThongTin.setLayoutManager(layoutManager);
 
-        rvThongTin.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
 
-            }
-        });
+
+
 
 
 //       rvThongTin.setOnItemClickListener(new AdapterView.OnItemClickListener() {
@@ -109,19 +102,15 @@ public class listthongtin extends AppCompatActivity {
 //        });
     }
 
-    void getData()
-    {
+
+    void getData() {
         try {
+                myRef.child("ThongTin").child(tenMien).child(tenTinh).addChildEventListener(new ChildEventListener() {
+                    @Override
+                    public void onChildAdded(@NonNull DataSnapshot dataSnapshot, @Nullable String s) {
 
-            myRef.child("ThongTin").child(tenMien).child(tenTinh).addChildEventListener(new ChildEventListener() {
-                @Override
-                public void onChildAdded(@NonNull DataSnapshot dataSnapshot, @Nullable String s) {
+                            MoTaChiTiet_class test = dataSnapshot.getValue(MoTaChiTiet_class.class);
 
-                        MoTaChiTiet_class test = dataSnapshot.getValue(MoTaChiTiet_class.class);
-                        if(test==null)
-                            ThongBao();
-                        else
-                        {
                             test.setKey(dataSnapshot.getKey());
                             // Toast.makeText(listthongtin.this, test.arrHinh.get(0).toString(),Toast.LENGTH_SHORT).show();
                             // Toast.makeText(listthongtin.this, test.listCmt.get(0).getTimeCmt(), Toast.LENGTH_SHORT).show();
@@ -129,38 +118,35 @@ public class listthongtin extends AppCompatActivity {
                             adapter.arr.add(test);
                             adapter.notifyDataSetChanged();
 
-                        }
+                    }
+
+                    @Override
+                    public void onChildChanged(@NonNull DataSnapshot dataSnapshot, @Nullable String s) {
+                    }
+
+                    @Override
+                    public void onChildRemoved(@NonNull DataSnapshot dataSnapshot) {
+
+                    }
+
+                    @Override
+                    public void onChildMoved(@NonNull DataSnapshot dataSnapshot, @Nullable String s) {
+
+                    }
+
+                    @Override
+                    public void onCancelled(@NonNull DatabaseError databaseError) {
+                    }
+                });
 
 
-
-                }
-                @Override
-                public void onChildChanged(@NonNull DataSnapshot dataSnapshot, @Nullable String s) {
-                }
-
-                @Override
-                public void onChildRemoved(@NonNull DataSnapshot dataSnapshot) {
-
-                }
-
-                @Override
-                public void onChildMoved(@NonNull DataSnapshot dataSnapshot, @Nullable String s) {
-
-                }
-
-                @Override
-                public void onCancelled(@NonNull DatabaseError databaseError) {
-                }
-            });
-
-
-
-        }catch (Exception ex)
-        {
-            Toast.makeText(listthongtin.this, "Lỗi, thử lại sau", Toast.LENGTH_SHORT).show();
-            Log.d("Hix", ex.toString());
+            }catch(Exception ex)
+            {
+                Toast.makeText(listthongtin.this, "Lỗi, thử lại sau", Toast.LENGTH_SHORT).show();
+                Log.d("Hix", ex.toString());
+            }
         }
-    }
+
 
     void  ThongBao()
     {
@@ -184,9 +170,9 @@ public class listthongtin extends AppCompatActivity {
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
 
-     getMenuInflater().inflate(R.menu.search, menu);
-
+        getMenuInflater().inflate(R.menu.search, menu);
         getMenuInflater().inflate(R.menu.menu_list_thong_tin,menu);
+        getMenuInflater().inflate(R.menu.menu_home, menu);
         android.support.v7.widget.SearchView searchView =(android.support.v7.widget.SearchView) menu.findItem(R.id.seachTinh).getActionView();
         searchView.setOnQueryTextListener(new android.support.v7.widget.SearchView.OnQueryTextListener() {
             @Override
@@ -203,6 +189,8 @@ public class listthongtin extends AppCompatActivity {
         });
        return super.onCreateOptionsMenu(menu);
     }
+
+
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
@@ -226,13 +214,13 @@ public class listthongtin extends AppCompatActivity {
                 it1.putExtras(bl);
                 startActivity(it1);
                 return  true;
-
+            case  R.id.MenuHome:
+                Intent it2 = new Intent(listthongtin.this, MainActivity.class);
+                startActivity(it2);
             default:break;
         }
         return super.onOptionsItemSelected(item);
     }
-
-
 
 
 }

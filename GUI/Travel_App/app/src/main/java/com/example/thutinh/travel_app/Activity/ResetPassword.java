@@ -1,14 +1,16 @@
-package com.example.thutinh.travel_app;
+package com.example.thutinh.travel_app.Activity;
 
 import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.text.TextUtils;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.example.thutinh.travel_app.R;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.FirebaseAuth;
@@ -16,7 +18,7 @@ import com.google.firebase.auth.FirebaseAuth;
 public class ResetPassword extends AppCompatActivity {
 
     private Button btnRestPassword;
-    private  Button btnBack;
+  //  private  Button btnBack;
     private TextView txtRestEmail;
     private FirebaseAuth mAuth;
 
@@ -26,12 +28,14 @@ public class ResetPassword extends AppCompatActivity {
         mAuth = FirebaseAuth.getInstance();
         setContentView(R.layout.activity_reset_password);
         AnhXa();
-        btnBack.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                finish();
-            }
-        });
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+
+//        btnBack.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                finish();
+//            }
+//        });
         btnRestPassword.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -70,9 +74,16 @@ public class ResetPassword extends AppCompatActivity {
     }
     private void AnhXa()
     {
-        btnBack = (Button)findViewById(R.id.btnBack);
+       // btnBack = (Button)findViewById(R.id.btnBack);
         btnRestPassword = (Button)findViewById(R.id.btnResetPassword);
         txtRestEmail = (TextView)findViewById(R.id.txtRestEmail);
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        if(item.getItemId()== android.R.id.home)
+            onBackPressed();
+        return super.onOptionsItemSelected(item);
     }
 }
 

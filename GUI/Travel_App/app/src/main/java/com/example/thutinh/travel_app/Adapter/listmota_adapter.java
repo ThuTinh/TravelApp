@@ -15,7 +15,7 @@ import android.widget.TextView;
 import com.bumptech.glide.Glide;
 import com.example.thutinh.travel_app.DTO.MoTaChiTiet_class;
 import com.example.thutinh.travel_app.R;
-import com.example.thutinh.travel_app.ThongTinDiaDiem;
+import com.example.thutinh.travel_app.Activity.ThongTinDiaDiem;
 //import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
@@ -40,7 +40,6 @@ public class listmota_adapter extends RecyclerView.Adapter<listmota_adapter.View
     public   ArrayList<MoTaChiTiet_class> arr;
     public Context mContext;
     public String tenMien, tenTinh;
-
 
 
     public class ViewHolder extends RecyclerView.ViewHolder  {

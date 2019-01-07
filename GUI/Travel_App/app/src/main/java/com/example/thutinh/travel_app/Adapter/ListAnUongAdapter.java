@@ -14,9 +14,8 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
-import com.example.thutinh.travel_app.ChiTietMonAn;
+import com.example.thutinh.travel_app.Activity.ChiTietMonAn;
 import com.example.thutinh.travel_app.DTO.DanhSachAnUong;
-import com.example.thutinh.travel_app.DTO.ThongTinMonAn;
 import com.example.thutinh.travel_app.R;
 
 import java.util.ArrayList;

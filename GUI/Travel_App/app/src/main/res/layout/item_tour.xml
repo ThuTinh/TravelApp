@@ -4,10 +4,11 @@
     xmlns:card_view="http://schemas.android.com/apk/res-auto"
     card_view:cardCornerRadius="10dp"
     android:layout_margin="5dp"
-    card_view:cardBackgroundColor="#a7d7c5"
+    card_view:cardBackgroundColor="#f3f6c8"
     android:id="@+id/cardListTour"
     android:layout_height="wrap_content">
     <LinearLayout
+        android:layout_margin="10dp"
         android:orientation="horizontal"
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
@@ -22,20 +23,26 @@
             android:orientation="vertical"
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
+
             <TextView
-                android:textSize="20dp"
                 android:id="@+id/lbListTourNoiDung"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content" />
+                android:layout_height="wrap_content"
+                android:textColor="#5f685a"
+                android:textSize="20dp" />
+
             <TextView
                 android:id="@+id/lbListTourKhoiHanh"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content" />
+                android:layout_height="wrap_content"
+                android:textColor="#5f685a" />
+
             <TextView
                 android:id="@+id/lbLisstTourdsDiaDiem"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="list danh sách"/>
+                android:text="list danh sách"
+                android:textColor="#5f685a" />
         </LinearLayout>
 
     </LinearLayout>

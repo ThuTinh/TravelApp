@@ -11,6 +11,45 @@ public class Home implements Serializable {
   private String Email;
   private String Face;
   private  String nameHome;
+  private String gia;
+  private  String tienIch;
+  private  String chiTietPhongO;
+  private  String link;
+  public List<Comment_class> listFeedBack= new ArrayList<>();
+  public List<String> arrHinh = new ArrayList<String>();
+  public String getGia() {
+        return gia;
+    }
+
+    public void setGia(String gia) {
+        this.gia = gia;
+    }
+
+    public String getTienIch() {
+        return tienIch;
+    }
+
+    public void setTienIch(String tienIch) {
+        this.tienIch = tienIch;
+    }
+
+    public String getChiTietPhongO() {
+        return chiTietPhongO;
+    }
+
+    public void setChiTietPhongO(String chiTietPhongO) {
+        this.chiTietPhongO = chiTietPhongO;
+    }
+
+    public String getLink() {
+        return link;
+    }
+
+    public void setLink(String link) {
+        this.link = link;
+    }
+
+
 
   public String getEmailNguoiTao()  {
     return emailNguoiTao;
@@ -32,8 +71,7 @@ public class Home implements Serializable {
     this.key = key;
   }
 
- public List<Comment_class> listFeedBack= new ArrayList<>();
-  public List<String> arrHinh = new ArrayList<String>();
+
 
   public Home() {
   }
@@ -96,19 +134,23 @@ public class Home implements Serializable {
     this.arrHinh = arrHinh;
   }
 
-  public Home(String diaDiem, String nameHome,String noiDung, String phone, String email, String face, List<Comment_class> listFeedBack, List<String> arrHinh) {
-    this.diaDiem = diaDiem;
-    this.noiDung = noiDung;
-    this.phone = phone;
-    Email = email;
-    Face = face;
-
-    this.listFeedBack = listFeedBack;
-    this.arrHinh = arrHinh;
-    this.nameHome = nameHome;
-  }
-
-  public String getNameHome() {
+    public Home(String diaDiem, String noiDung, String phone, String email, String face, String nameHome, String gia, String tienIch, String chiTietPhongO, String link, String emailNguoiTao, String key, List<Comment_class> listFeedBack, List<String> arrHinh) {
+        this.diaDiem = diaDiem;
+        this.noiDung = noiDung;
+        this.phone = phone;
+        Email = email;
+        Face = face;
+        this.nameHome = nameHome;
+        this.gia = gia;
+        this.tienIch = tienIch;
+        this.chiTietPhongO = chiTietPhongO;
+        this.link = link;
+        this.emailNguoiTao = emailNguoiTao;
+        this.key = key;
+        this.listFeedBack = listFeedBack;
+        this.arrHinh = arrHinh;
+    }
+    public String getNameHome() {
     return nameHome;
   }
 

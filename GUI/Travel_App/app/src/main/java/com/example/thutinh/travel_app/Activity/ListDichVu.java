@@ -1,12 +1,14 @@
-package com.example.thutinh.travel_app;
+package com.example.thutinh.travel_app.Activity;
 
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.view.Menu;
 import android.view.MenuItem;
-import android.view.View;
-import android.widget.FrameLayout;
 import android.widget.ImageView;
+
+import com.example.thutinh.travel_app.MainActivity;
+import com.example.thutinh.travel_app.R;
 
 import technolifestyle.com.imageslider.FlipperLayout;
 import technolifestyle.com.imageslider.FlipperView;
@@ -80,11 +82,22 @@ public class ListDichVu extends AppCompatActivity {
     }
 
     @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(R.menu.menu_home, menu);
+        return super.onCreateOptionsMenu(menu);
+    }
+
+    @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         if(item.getItemId()==android.R.id.home)
         {
             Intent it = new Intent(ListDichVu.this, listthongtin.class);
             it.putExtras(bRecieve);
+            startActivity(it);
+        }
+        if(item.getItemId()==R.id.MenuHome)
+        {
+            Intent it = new Intent(ListDichVu.this, MainActivity.class);
             startActivity(it);
         }
 

@@ -5,7 +5,7 @@
     android:orientation="vertical"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".AddTour">
+    tools:context=".Activity.AddTour">
     <android.support.v4.widget.NestedScrollView
 
         android:layout_width="match_parent"
@@ -15,15 +15,25 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent">
 
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Thông tin tour"
+                android:textAlignment="center"
+                android:textColor="#679186"
+                android:textSize="30sp" />
+
 
     <LinearLayout
     android:orientation="horizontal"
     android:layout_width="match_parent"
     android:layout_height="wrap_content">
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Nội dung"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Thời gian:"
+            android:textSize="18sp" />
     <EditText
         android:id="@+id/txtTourNoiDung"
         android:layout_width="match_parent"
@@ -33,10 +43,12 @@
                 android:orientation="horizontal"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content">
+
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Giá"/>
+                    android:text="Giá:"
+                    android:textSize="18sp" />
                 <EditText
                     android:id="@+id/txtTourGia"
                     android:layout_width="match_parent"
@@ -47,10 +59,12 @@
         android:orientation="horizontal"
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
+
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Danh sách địa điểm:"/>
+            android:text="Danh sách địa điểm:"
+            android:textSize="18sp" />
         <EditText
             android:id="@+id/txtTourdsDiaDiem"
             android:layout_width="match_parent"
@@ -61,10 +75,12 @@
         android:orientation="horizontal"
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
+
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Khởi hành tại"/>
+            android:text="Khởi hành tại:"
+            android:textSize="18sp" />
         <EditText
             android:id="@+id/txtTourKhoiHanhTai"
             android:layout_width="match_parent"
@@ -75,10 +91,12 @@
         android:orientation="horizontal"
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
+
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Thời gian từ"/>
+            android:text="Thời gian từ:"
+            android:textSize="18sp" />
         <EditText
             android:id="@+id/txtTourThoiGianTu"
             android:layout_width="match_parent"
@@ -89,10 +107,12 @@
         android:orientation="horizontal"
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
+
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Thời gian đến"/>
+            android:text="Thời gian đến:"
+            android:textSize="18sp" />
         <EditText
             android:id="@+id/txtTourThoiGianDen"
             android:layout_width="match_parent"
@@ -103,10 +123,12 @@
         android:orientation="horizontal"
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
+
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Mã Tour"/>
+            android:text="Mã tour:"
+            android:textSize="18sp" />
         <EditText
             android:id="@+id/txtTourMaTour"
             android:layout_width="match_parent"
@@ -119,15 +141,17 @@
             android:layout_height="wrap_content"
             android:orientation="horizontal">
 
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Số lượng còn lại" />
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Số lượng còn lại:"
+            android:textSize="18sp" />
 
-            <EditText
-                android:id="@+id/txtTourSlConLai"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content" />
+        <EditText
+            android:id="@+id/txtTourSlConLai"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:inputType="number" />
 
         </LinearLayout>
 
@@ -139,12 +163,14 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Phone" />
+                    android:text="Phone:"
+                    android:textSize="18sp" />
 
                 <EditText
                     android:id="@+id/txtTourPhone"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content" />
+                    android:layout_height="wrap_content"
+                    android:inputType="phone" />
 
             </LinearLayout>
             <LinearLayout
@@ -155,7 +181,8 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="FaceBook:" />
+                    android:text="FaceBook:"
+                    android:textSize="18sp" />
 
                 <EditText
                     android:id="@+id/txtTourFace"
@@ -171,52 +198,31 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Email:" />
+                    android:text="Email:"
+                    android:textSize="18sp" />
 
                 <EditText
                     android:id="@+id/txtTourEmail"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content" />
+                    android:layout_height="wrap_content"
+                    android:inputType="textEmailAddress" />
 
             </LinearLayout>
-
             <LinearLayout
-                android:background="#ebfffb"
-                android:orientation="vertical"
-                android:layout_margin="30dp"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content">
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
                 <TextView
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="Mô tả lịch trình"/>
-                <TextView
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="Ngày:"/>
-                <EditText
-                    android:id="@+id/txtTourChiTietLichTrinhNgay"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    />
-                <TextView
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="Nội dung chi tiết:"/>
-                <EditText
-                    android:id="@+id/txtTourChiTietLichTrinhNoiDung"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    />
-                <Button
-                    android:layout_margin="10dp"
-                    android:background="@drawable/button_custom"
-                    android:id="@+id/btnTourThemLichTrinh"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:textAllCaps="false"
-                    android:textSize="15dp"
-                    android:text="Thêm lịch trình" />
+                    android:text="Link:"
+                    android:textSize="18sp" />
+
+                <EditText
+                    android:id="@+id/txtTourLink"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content" />
 
             </LinearLayout>
 
@@ -225,11 +231,14 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content">
             </android.support.v7.widget.RecyclerView>
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="Danh sách hình ảnh quảng bá"/>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Danh sách hình ảnh quảng bá"
+                android:textSize="18sp" />
    <android.support.v7.widget.RecyclerView
+       android:background="#faf9f9"
        android:id="@+id/listTourHinh"
        android:layout_width="match_parent"
        android:layout_height="wrap_content">

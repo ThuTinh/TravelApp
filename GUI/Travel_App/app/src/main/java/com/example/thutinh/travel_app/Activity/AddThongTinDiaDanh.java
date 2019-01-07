@@ -1,10 +1,7 @@
-package com.example.thutinh.travel_app;
+package com.example.thutinh.travel_app.Activity;
 
-import android.content.ClipData;
 import android.content.Intent;
 import android.graphics.Bitmap;
-import android.graphics.BitmapFactory;
-import android.media.Image;
 import android.net.Uri;
 import android.provider.MediaStore;
 import android.support.annotation.NonNull;
@@ -19,7 +16,6 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.PopupMenu;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -28,6 +24,8 @@ import com.bumptech.glide.request.target.SimpleTarget;
 import com.bumptech.glide.request.transition.Transition;
 import com.example.thutinh.travel_app.Adapter.ThemAnhAdapter;
 import com.example.thutinh.travel_app.DTO.MoTaChiTiet_class;
+import com.example.thutinh.travel_app.MainActivity;
+import com.example.thutinh.travel_app.R;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
@@ -38,7 +36,6 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
 import com.google.firebase.storage.UploadTask;
-import com.squareup.picasso.Picasso;
 
 import java.io.ByteArrayOutputStream;
 import java.io.IOException;
@@ -51,7 +48,7 @@ public class AddThongTinDiaDanh extends AppCompatActivity {
 
    // private Button btnLuu;
    // private Button btnHuy;
-    private Button btnTake;
+   // private Button btnTake;
     private Button btnChoose;
     private EditText txtTenDiaDanh;
     private EditText txtMoTa;
@@ -66,7 +63,6 @@ public class AddThongTinDiaDanh extends AppCompatActivity {
     private RecyclerView rvAddAnh;
     private List<Bitmap> listHinh;
     private ThemAnhAdapter themAnhAdapter;
-    boolean checkIsFirst = true;
     private String Edit;
     private TextView txtAddThongTinDiaDanhViTri;
     private FirebaseAuth mAuth;
@@ -150,6 +146,7 @@ public class AddThongTinDiaDanh extends AppCompatActivity {
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         getMenuInflater().inflate(R.menu.menu_add_thong_tin, menu);
+        getMenuInflater().inflate(R.menu.menu_home, menu);
         return super.onCreateOptionsMenu(menu);
     }
 
@@ -161,19 +158,18 @@ public class AddThongTinDiaDanh extends AppCompatActivity {
                 return true;
             case R.id.save:
                     Luu();
+                    return true;
+            case  R.id.MenuHome:
+                Intent it = new Intent(AddThongTinDiaDanh.this, MainActivity.class);
+                startActivity(it);
             default:
                 break;
         }
         return super.onOptionsItemSelected(item);
     }
-    public  void ShowPopupMenu()
-    {
-
-
-    }
 
     void AnhXa() {
-        btnTake = (Button) findViewById(R.id.btnTake);
+      //  btnTake = (Button) findViewById(R.id.btnTake);
         btnChoose = (Button) findViewById(R.id.btnChoose);
         txtMoTa = (EditText) findViewById(R.id.txtMoTa);
         txtTenDiaDanh = (EditText) findViewById(R.id.txtTenDiaDanh);
@@ -211,7 +207,7 @@ public class AddThongTinDiaDanh extends AppCompatActivity {
                 Uri downloadUrl = urlTask.getResult();
                themAnhAdapter.arrHinh.add(downloadUrl.toString());
               //  isDone = true;
-            Toast.makeText(AddThongTinDiaDanh.this, moTaChiTiet.arrHinh.size()+"",Toast.LENGTH_SHORT).show();
+          //  Toast.makeText(AddThongTinDiaDanh.this, moTaChiTiet.arrHinh.size()+"",Toast.LENGTH_SHORT).show();
             }
         });
     }
@@ -220,7 +216,7 @@ public class AddThongTinDiaDanh extends AppCompatActivity {
     private  void Luu()
     {
         try {
-            if (txtMoTa.getText().length() == 0 || txtTenDiaDanh.getText().length() == 0) {
+            if (txtMoTa.getText().toString().trim().length() == 0 || txtTenDiaDanh.getText().toString().trim().length() == 0) {
                 Toast.makeText(AddThongTinDiaDanh.this, "Thông tin chưa đầy đủ", Toast.LENGTH_SHORT).show();
             } else {
 
@@ -273,11 +269,9 @@ public class AddThongTinDiaDanh extends AppCompatActivity {
     protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
         Bitmap bitmap;
 
-
         if (requestCode == request_code && resultCode == RESULT_OK && data != null) {
             bitmap = (Bitmap) data.getExtras().get("data");
             listHinh.add(bitmap);
-
         }
         if (requestCode == request_codeFile && resultCode == RESULT_OK && data != null) {
 

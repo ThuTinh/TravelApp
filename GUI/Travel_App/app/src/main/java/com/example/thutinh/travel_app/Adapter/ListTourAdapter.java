@@ -13,11 +13,9 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
-import com.example.thutinh.travel_app.DTO.MoTaChiTiet_class;
 import com.example.thutinh.travel_app.DTO.TourDuLich;
 import com.example.thutinh.travel_app.R;
-import com.example.thutinh.travel_app.ThongTinDiaDiem;
-import com.example.thutinh.travel_app.Tour;
+import com.example.thutinh.travel_app.Activity.Tour;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -53,11 +51,11 @@ public class ListTourAdapter extends RecyclerView.Adapter<ListTourAdapter.ViewHo
     public void onBindViewHolder(@NonNull ListTourAdapter.ViewHolder viewHolder, final int i) {
         TourDuLich item = listTour.get(i);
         TextView lbNoiDung = viewHolder.lbNoiDung;
-       lbNoiDung.setText(item.getNoiDung());
+       lbNoiDung.setText("Thời gian: "+item.getthoiGian());
         TextView lbKhoiHanh= viewHolder.lbDiaDiemKhoiHanh;
-        lbKhoiHanh.setText(item.getDiaDiemKhoiHanh());
+        lbKhoiHanh.setText("Khởi hành tại: "+item.getDiaDiemKhoiHanh());
         TextView lbDanhSach = viewHolder.lbListDanhSach;
-       lbDanhSach.setText( item.getDsDiaDiem());
+       lbDanhSach.setText(" Danh sách địa điểm: "+ item.getDsDiaDiem());
         ImageView img = viewHolder.img;
         if(item.arrHinh.size()==0)
             img.setImageResource(R.drawable.noimg);

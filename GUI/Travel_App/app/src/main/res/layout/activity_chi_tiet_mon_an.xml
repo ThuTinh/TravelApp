@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ChiTietMonAn">
+    tools:context=".Activity.ChiTietMonAn">
     <android.support.v4.widget.NestedScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent">
@@ -58,12 +58,12 @@
 
                     <TextView
 
+                        android:id="@+id/lbChiTietAnUongPhone"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:text="Phone"
-                        android:id="@+id/lbChiTietAnUongPhone"
                         android:textAlignment="center"
-                        />
+                        android:textColor="#f12d2d" />
                 </LinearLayout>
                 <LinearLayout
 
@@ -82,9 +82,9 @@
                         android:id="@+id/lbChiTietAnUongFace"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:textAlignment="center"
                         android:text="facbook"
-                        />
+                        android:textAlignment="center"
+                        android:textColor="#f12d2d" />
 
                 </LinearLayout>
                 <LinearLayout
@@ -105,17 +105,19 @@
                         android:id="@+id/lbChiTietAnUongEmail"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:textAlignment="center"
                         android:text="Email"
-                        />
+                        android:textAlignment="center"
+                        android:textColor="#f12d2d" />
 
                 </LinearLayout>
             </LinearLayout>
+
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="Tên"
                 android:textAlignment="center"
+                android:textColor="#fd5f00"
                 android:textSize="30dp" />
             <TextView
                 android:layout_width="match_parent"

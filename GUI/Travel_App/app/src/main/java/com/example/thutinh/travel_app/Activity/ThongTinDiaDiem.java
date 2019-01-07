@@ -1,4 +1,4 @@
-package com.example.thutinh.travel_app;
+package com.example.thutinh.travel_app.Activity;
 
 import android.content.Intent;
 import android.location.Address;
@@ -15,13 +15,14 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
-import android.widget.TabHost;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.thutinh.travel_app.Adapter.CommentAdapter;
 import com.example.thutinh.travel_app.DTO.Comment_class;
 import com.example.thutinh.travel_app.DTO.MoTaChiTiet_class;
+import com.example.thutinh.travel_app.MainActivity;
+import com.example.thutinh.travel_app.R;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.auth.UserInfo;
@@ -30,7 +31,6 @@ import com.google.firebase.database.FirebaseDatabase;
 
 import java.io.IOException;
 import java.text.SimpleDateFormat;
-import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
@@ -95,8 +95,6 @@ public class ThongTinDiaDiem extends AppCompatActivity {
         getData();
         //  myRef.child(tenMien).child(tenTinh).child(item.getKey()).child("listCmt").push().setValue(new Comment_class("df","dfg","rt"));
         XetYeuThich();
-
-
 
         imgThaTim.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -191,6 +189,7 @@ public class ThongTinDiaDiem extends AppCompatActivity {
 
             getMenuInflater().inflate(R.menu.menu_list_edit, menu);
             getMenuInflater().inflate(R.menu.menu_update, menu);
+        getMenuInflater().inflate(R.menu.menu_home, menu);
         return super.onCreateOptionsMenu(menu);
     }
 
@@ -201,7 +200,6 @@ public class ThongTinDiaDiem extends AppCompatActivity {
         else {
 
             cmt.setName(name);
-
             cmt.setCmt(txtComment.getText().toString());
             //Lay gio he thong
             Date thoiGian = new Date();
@@ -249,7 +247,11 @@ public class ThongTinDiaDiem extends AppCompatActivity {
                 bl.putStringArrayList("ListEditor",  item.getListEdit());
                 it.putExtras(bl);
                 startActivity(it);
-
+                return true;
+            case  R.id.MenuHome:
+                Intent it1 = new Intent(ThongTinDiaDiem.this, MainActivity.class);
+                startActivity(it1);
+                return true;
             default:break;
         }
         return super.onOptionsItemSelected(t);

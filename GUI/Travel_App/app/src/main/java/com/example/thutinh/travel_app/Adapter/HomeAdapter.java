@@ -14,10 +14,8 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
-import com.example.thutinh.travel_app.ChiTietHome;
+import com.example.thutinh.travel_app.Activity.ChiTietHome;
 import com.example.thutinh.travel_app.DTO.Home;
-import com.example.thutinh.travel_app.DTO.MoTaChiTiet_class;
-import com.example.thutinh.travel_app.DTO.TenTinh_class;
 import com.example.thutinh.travel_app.R;
 
 import java.util.ArrayList;
@@ -28,6 +26,9 @@ public class HomeAdapter extends  RecyclerView.Adapter<HomeAdapter.ViewHolder> {
 
     private List<Home> listHome;
     private  String loaiDichVu;
+    public ArrayList<Home> arr;
+    private Context mContext;
+    private  String tenTinh, tenMien;
 
     public HomeAdapter(List<Home> listHome,  Context mContext, String tenTinh, String tenMien, String loaiDichVu) {
         this.listHome = listHome;
@@ -44,9 +45,6 @@ public class HomeAdapter extends  RecyclerView.Adapter<HomeAdapter.ViewHolder> {
     }
 
 
-    public ArrayList<Home> arr;
-    private Context mContext;
-    private  String tenTinh, tenMien;
     @NonNull
     @Override
     public HomeAdapter.ViewHolder onCreateViewHolder(@NonNull ViewGroup viewGroup, int i) {

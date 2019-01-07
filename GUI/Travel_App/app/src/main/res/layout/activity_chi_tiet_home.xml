@@ -5,7 +5,7 @@
     android:orientation="vertical"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ChiTietHome">
+    tools:context=".Activity.ChiTietHome">
     <android.support.v4.widget.NestedScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent">
@@ -19,6 +19,15 @@
                 android:layout_height="200dp">
 
             </technolifestyle.com.imageslider.FlipperLayout>
+            <TextView
+                android:textColor="#fd5f00"
+                android:textSize="30dp"
+                android:id="@+id/lbChiTietNameHome"
+                android:textAlignment="center"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Name Home"/>
+
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -29,16 +38,24 @@
                     android:layout_width="20dp"
                     android:layout_height="30dp"
                     android:src="@drawable/map" />
+
                 <TextView
-                    android:textColor="#a20e0e"
                     android:id="@+id/lbChiTietHomeViTri"
-                    android:layout_marginTop="10dp"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Địa điểm"/>
-
-
+                    android:layout_marginTop="10dp"
+                    android:text="Địa điểm"
+                    android:textColor="#f12d2d" />
             </LinearLayout>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Thông tin liên hệ"
+                android:textColor="#1d5464"
+                android:textSize="18sp"
+                android:textStyle="bold" />
+
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content">
@@ -49,20 +66,21 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content">
 
-                <ImageView
-                    android:layout_gravity="center"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:src="@drawable/phone"/>
+                    <ImageView
+                        android:id="@+id/imgPhone"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:src="@drawable/phone" />
 
-                <TextView
+                    <TextView
 
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="Phone"
-                    android:id="@+id/lbChiTietHomePhone"
-                    android:textAlignment="center"
-                    />
+                        android:id="@+id/lbChiTietHomePhone"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="Phone"
+                        android:textAlignment="center"
+                        android:textColor="#f12d2d" />
 
             </LinearLayout>
                 <LinearLayout
@@ -82,9 +100,9 @@
                         android:id="@+id/lbChiTietHomeFace"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:textAlignment="center"
                         android:text="facbook"
-                        />
+                        android:textAlignment="center"
+                        android:textColor="#f12d2d" />
 
                 </LinearLayout>
                 <LinearLayout
@@ -105,29 +123,116 @@
                         android:id="@+id/lbChiTietHomeEmail"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:textAlignment="center"
                         android:text="Email"
-                        />
+                        android:textAlignment="center"
+                        android:textColor="#f12d2d" />
 
                 </LinearLayout>
+            </LinearLayout>
+            <LinearLayout
+                android:layout_marginTop="10dp"
+                android:orientation="vertical"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
 
+                <TextView
+                    android:id="@+id/lbChiTietHomeGia"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="1000000/1 đêm"
+                    android:textColor="#f05a28"
+                    android:textSize="18sp"
+                    android:textStyle="bold" />
 
             </LinearLayout>
-            <TextView
-                android:textColor="#fd5f00"
-                android:textSize="30dp"
-                android:id="@+id/lbChiTietNameHome"
-                android:textAlignment="center"
+
+            <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Name Home"/>
+                android:orientation="horizontal">
+
+            </LinearLayout>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Thông tin chi tiết phòng ở"
+                    android:textColor="#1d5464"
+                    android:textSize="18sp"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:id="@+id/lbChiTietHomeChiTietPhongO"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="20dp"
+                    android:text="phòng có 6 giowngf, 1 phòng tắm, cso dungj cụ đầy đủ cho khách sủ dụng"
+                    android:textSize="18sp" />
+
+            </LinearLayout>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Tiện ích"
+                    android:textColor="#1d5464"
+                    android:textSize="18sp"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:id="@+id/lbChiTietHomeTienIch"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="20dp"
+                    android:text=" Wifi, tivi, điều hòa, khăn tắm, suwat tắm, dầu gội, bàn chải"
+                    android:textSize="18sp" />
+
+            </LinearLayout>
+
             <TextView
-                android:layout_marginLeft="5dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Giới thiệu chỗ ở"
+                android:textColor="#1d5464"
+                android:textSize="18sp"
+                android:textStyle="bold" />
+
+            <TextView
                 android:id="@+id/lbChiTietNoiDung"
-                android:textSize="18dp"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Nội dung"/>
+                android:layout_marginLeft="5dp"
+                android:text="Nội dung"
+                android:textSize="18sp" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Click vào link bên dưới để dặt phòng"
+                android:textColor="#f05a28"
+                android:textSize="18sp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/lbChiTietHomeLink"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="link"
+                android:textColor="#0b032d"
+                android:textSize="15sp"
+                android:textStyle="italic" />
+
+
+
             <TextView
                 android:textColor="#2c3848"
                 android:textSize="20dp"

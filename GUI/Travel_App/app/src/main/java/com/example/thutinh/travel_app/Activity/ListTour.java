@@ -1,4 +1,4 @@
-package com.example.thutinh.travel_app;
+package com.example.thutinh.travel_app.Activity;
 
 import android.content.Intent;
 import android.support.annotation.NonNull;
@@ -12,11 +12,10 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.Toast;
 
-import com.example.thutinh.travel_app.Adapter.ListAnUongAdapter;
 import com.example.thutinh.travel_app.Adapter.ListTourAdapter;
-import com.example.thutinh.travel_app.DTO.DanhSachAnUong;
-import com.example.thutinh.travel_app.DTO.Home;
 import com.example.thutinh.travel_app.DTO.TourDuLich;
+import com.example.thutinh.travel_app.MainActivity;
+import com.example.thutinh.travel_app.R;
 import com.google.firebase.database.ChildEventListener;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
@@ -115,6 +114,7 @@ public class ListTour extends AppCompatActivity {
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         getMenuInflater().inflate(R.menu.create_back,menu);
+        getMenuInflater().inflate(R.menu.menu_home, menu);
         return super.onCreateOptionsMenu(menu);
     }
 
@@ -132,6 +132,9 @@ public class ListTour extends AppCompatActivity {
                 it.putExtras(bSend);
                 startActivity(it);
                 return  true;
+            case  R.id.MenuHome:
+                Intent it1 = new Intent(ListTour.this, MainActivity.class);
+                startActivity(it1);
             default:break;
         }
         return super.onOptionsItemSelected(item);

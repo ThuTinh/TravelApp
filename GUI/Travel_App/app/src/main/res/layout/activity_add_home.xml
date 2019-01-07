@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="#f3f9fb"
-    tools:context=".AddHome">
+    tools:context=".Activity.AddHome">
     <android.support.v4.widget.NestedScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent">
@@ -25,12 +25,13 @@
                 android:orientation="horizontal"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content">
+
                 <TextView
-                    android:textSize="20dp"
-                    android:layout_weight="1"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Tên nhà ở:" />
+                    android:layout_weight="1"
+                    android:text="Tên nhà ở:"
+                    android:textSize="18sp" />
                 <EditText
                     android:id="@+id/txtHomeName"
                     android:layout_weight="4"
@@ -40,20 +41,23 @@
                     android:layout_height="wrap_content" />
 
             </LinearLayout>
+
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:textSize="18dp"
-                android:text="Phần liên hệ"/>
+                android:text="Phần liên hệ"
+                android:textSize="18sp"
+                android:textStyle="bold" />
             <LinearLayout
                 android:orientation="horizontal"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content">
+
                 <TextView
-                    android:textSize="18dp"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="FaceBook:"/>
+                    android:text="FaceBook:"
+                    android:textSize="18sp" />
 
                 <EditText
                     android:id="@+id/txtHomeFace"
@@ -69,11 +73,12 @@
                 android:orientation="horizontal"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content">
+
                 <TextView
-                    android:textSize="18dp"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Phone:"/>
+                    android:text="Phone:"
+                    android:textSize="18sp" />
 
                 <EditText
                     android:id="@+id/txtHomePhone"
@@ -89,11 +94,12 @@
                 android:orientation="horizontal"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content">
+
                 <TextView
-                    android:textSize="18dp"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Email:"/>
+                    android:text="Email:"
+                    android:textSize="18sp" />
 
                 <EditText
                     android:id="@+id/txtHomeEmail"
@@ -111,19 +117,97 @@
                 android:orientation="horizontal"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content">
+
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="Vị trí:"
-                    android:textSize="18dp"/>
+                    android:textSize="18sp" />
                 <EditText
                     android:id="@+id/txtHomeViTri"
                     android:layout_marginRight="20dp"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     />
+            </LinearLayout>
+            <LinearLayout
+                android:orientation="horizontal"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
 
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Giá phòng:"
+                    android:textSize="18sp" />
+                <EditText
+                    android:id="@+id/txtHomeGiaPhong"
+                    android:layout_marginRight="20dp"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    />
 
+            </LinearLayout>
+            <LinearLayout
+                android:orientation="horizontal"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:orientation="horizontal"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Thông tin chi tiết phòng ỏ:"
+                    android:textSize="18sp" />
+                <EditText
+                    android:id="@+id/txtHomeThongTinChiTietPhongO"
+                    android:layout_marginRight="20dp"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:orientation="horizontal"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Tiện ích:"
+                    android:textSize="18sp" />
+                <EditText
+                    android:id="@+id/txtHomeTienIch"
+                    android:layout_marginRight="20dp"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    />
+
+            </LinearLayout>
+            <LinearLayout
+                android:orientation="horizontal"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Link Webside (Nếu có)"
+                    android:textSize="18sp" />
+                <EditText
+                    android:id="@+id/txtHomeLink"
+                    android:layout_marginRight="20dp"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    />
 
             </LinearLayout>
 
@@ -131,11 +215,14 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="Danh sách hình ảnh"
-                android:textSize="14sp" />
+                android:textSize="18sp"
+                android:textStyle="bold" />
+
             <android.support.v7.widget.RecyclerView
+                android:background="#faf9f9"
                 android:id="@+id/rvImgAddHome"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content">
+                android:layout_height="100dp">
 
             </android.support.v7.widget.RecyclerView>
 

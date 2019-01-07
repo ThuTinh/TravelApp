@@ -2,7 +2,9 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.example.thutinh.travel_app">
 
+    <uses-permission android:name="android.permission.CALL_PHONE" />
     <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE"></uses-permission>
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
 
     <!--
@@ -36,40 +38,33 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".dangnhap"
+            android:name=".Activity.dangnhap"
             android:theme="@style/AppTheme" />
-        <activity android:name=".dangki" />
-        <activity android:name=".listthongtin" />
-        <activity android:name=".listTenTinh" />
-        <activity android:name=".AddThongTinDiaDanh" />
+        <activity android:name=".Activity.dangki" />
+        <activity android:name=".Activity.listthongtin" />
+        <activity android:name=".Activity.listTenTinh" />
+        <activity android:name=".Activity.AddThongTinDiaDanh" />
 
         <meta-data
             android:name="preloaded_fonts"
             android:resource="@array/preloaded_fonts" />
 
-        <activity android:name=".ResetPassword" />
+        <activity android:name=".Activity.ResetPassword" />
+        <activity android:name=".Activity.ListHome" />
+        <activity android:name=".Activity.ChiTietHome" />
+        <activity android:name=".Activity.AddHome" />
+        <activity android:name=".Activity.ListDichVu" />
+        <activity android:name=".Activity.Tour" />
+        <activity android:name=".Activity.ListAnUong" />
+        <activity android:name=".Activity.AddAnUong" />
+        <activity android:name=".Activity.ChiTietMonAn" />
+        <activity android:name=".Activity.ThongTinDiaDiem" />
         <activity
-            android:name=".map"
-            android:label="@string/title_activity_map" />
-        <activity android:name=".map_dulich" />
-        <activity android:name=".ListHome" />
-        <activity android:name=".ThongTinDichVuChiTiet" />
-        <activity android:name=".ChiTietHome" />
-        <activity android:name=".AddHome" />
-        <activity android:name=".ListDichVu" />
-        <activity android:name=".Tour" />
-        <activity android:name=".AmThuc" />
-        <activity android:name=".ListAnUong" />
-        <activity android:name=".AddAnUong" />
-        <activity android:name=".ChiTietMonAn" />
-        <activity android:name=".AddSanPham" />
-        <activity android:name=".ThongTinDiaDiem" />
-        <activity
-            android:name=".MapClient"
+            android:name=".Activity.MapClient"
             android:label="@string/title_activity_map_client" />
-        <activity android:name=".ListEditor" />
-        <activity android:name=".AddTour" />
-        <activity android:name=".ListTour"></activity>
+        <activity android:name=".Activity.ListEditor" />
+        <activity android:name=".Activity.AddTour" />
+        <activity android:name=".Activity.ListTour" />
     </application>
 
 </manifest>

@@ -1,31 +1,24 @@
-package com.example.thutinh.travel_app;
+package com.example.thutinh.travel_app.Activity;
 
+import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
-import android.nfc.Tag;
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
+import android.net.ConnectivityManager;
+import android.net.NetworkInfo;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
-import android.widget.EditText;
 import android.widget.ListView;
-import android.widget.MultiAutoCompleteTextView;
-import android.widget.SearchView;
-import android.widget.Toast;
 
 import com.example.thutinh.travel_app.Adapter.listTenTinhAdapter;
-import com.example.thutinh.travel_app.DTO.MoTaChiTiet_class;
 import com.example.thutinh.travel_app.DTO.TenTinh_class;
+import com.example.thutinh.travel_app.MainActivity;
+import com.example.thutinh.travel_app.R;
 import com.google.firebase.auth.FirebaseAuth;
-import com.google.firebase.database.ChildEventListener;
-import com.google.firebase.database.DataSnapshot;
-import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
@@ -48,7 +41,7 @@ public class listTenTinh extends AppCompatActivity {
         mAuth = FirebaseAuth.getInstance();
         AnhXa();
         //Nhận dữ liệu từ màn hình chính
-       Render();
+        GetData();
         getSupportActionBar().setTitle("List tỉnh");
        listViewTenTinh.setOnItemClickListener(new AdapterView.OnItemClickListener() {
            @Override
@@ -63,7 +56,8 @@ public class listTenTinh extends AppCompatActivity {
                    dialog.setPositiveButton("OK", new DialogInterface.OnClickListener() {
                        @Override
                        public void onClick(DialogInterface dialog, int which) {
-
+                            Intent it = new Intent(listTenTinh.this, dangnhap.class);
+                            startActivity(it);
                        }
                    });
                    AlertDialog alertDialog = dialog.create();
@@ -91,6 +85,8 @@ public class listTenTinh extends AppCompatActivity {
 
     }
 
+
+
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId())
@@ -105,7 +101,7 @@ public class listTenTinh extends AppCompatActivity {
         return super.onOptionsItemSelected(item);
     }
 
-    void Render()
+    void GetData()
     {
         Intent it = getIntent();
         Bundle bundle = it.getBundleExtra("DuLieu");

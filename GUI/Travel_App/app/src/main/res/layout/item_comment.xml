@@ -12,8 +12,8 @@
         android:layout_height="wrap_content"
         android:layout_marginLeft="5dp"
         android:text="Nguyễn Văn A"
-        android:textColor="#a20e0e"
-        android:textSize="15dp"
+        android:textColor="#f12d2d"
+        android:textSize="18sp"
         android:textStyle="italic" />
 
     <TextView
@@ -32,7 +32,7 @@
         android:layout_height="wrap_content"
         android:layout_marginLeft="15dp"
         android:text="Địa điểm phù hợp để đi du lịch, dã ngoại"
-        android:textSize="16dp" />
+        android:textSize="18sp" />
 
 
 </LinearLayout>

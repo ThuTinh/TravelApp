@@ -1,27 +1,26 @@
-package com.example.thutinh.travel_app;
+package com.example.thutinh.travel_app.Activity;
 
 import android.content.Intent;
+import android.net.Uri;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
-import android.util.DisplayMetrics;
+import android.text.TextUtils;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.ExpandableListView;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.example.thutinh.travel_app.Adapter.ChiTietTourAdapter;
 import com.example.thutinh.travel_app.Adapter.CommentAdapter;
-import com.example.thutinh.travel_app.Adapter.ExpandableListAdapterCustomerTour;
 import com.example.thutinh.travel_app.DTO.Comment_class;
-import com.example.thutinh.travel_app.DTO.Home;
 import com.example.thutinh.travel_app.DTO.TourDuLich;
+import com.example.thutinh.travel_app.MainActivity;
+import com.example.thutinh.travel_app.R;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DatabaseReference;
@@ -35,8 +34,7 @@ import technolifestyle.com.imageslider.FlipperView;
 
 public class Tour extends AppCompatActivity {
 
-    private TextView lbTourPhone,lbTourFace,lbTourCmt,lbTourEmail,lbTourNoiDung,lbTourTGTu,lbTourTGDen,lbTourGia,lbTourDiaDiemDen,lbTourMaTour,lbTourSoLuongConLai,lbKhoiHanhTai;
-   //private ExpandableListView expanlistLichTrinh;
+    private TextView lbTourThoiGian,lbTourLink,lbTourPhone,lbTourFace,lbTourCmt,lbTourEmail,lbTourTGTu,lbTourTGDen,lbTourGia,lbTourDiaDiemDen,lbTourMaTour,lbTourSoLuongConLai,lbKhoiHanhTai;
     private Button btnTourSave;
     private EditText txtTourCmt;
     private FlipperLayout flipTour;
@@ -50,8 +48,7 @@ public class Tour extends AppCompatActivity {
     private String tenTinh;
     private  String loaiDichVu;
     private TourDuLich tour;
-    private RecyclerView rvListChiTietTour, rvTourCmt;
-    private ChiTietTourAdapter chiTietTourAdapter;
+    private RecyclerView rvTourCmt;
     private CommentAdapter commentAdapter;
     private  Comment_class cmt;
     @Override
@@ -71,19 +68,36 @@ public class Tour extends AppCompatActivity {
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         AnhXa();
         GetData();
-        chiTietTourAdapter = new ChiTietTourAdapter(tour.listChiTietTour);
-        rvListChiTietTour.setAdapter(chiTietTourAdapter);
-        LinearLayoutManager layoutManager = new LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false);
-        rvListChiTietTour.setLayoutManager(layoutManager);
+        lbTourPhone.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                String phone = lbTourPhone.getText().toString();
+                if(!TextUtils.isEmpty(phone))
+                {
+                    String dial = "tel:" + phone;
+                    startActivity(new Intent(Intent.ACTION_DIAL, Uri.parse(dial)));
+                }
+                else
+                {
+                    Toast.makeText(Tour.this, "Số điện thoại không phù hợp", Toast.LENGTH_SHORT).show();
+                }
+            }
+        });
+        lbTourLink.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent it = new Intent(Intent.ACTION_VIEW, Uri.parse(lbTourLink.getText().toString()));
+                startActivity(it);
+            }
+        });
+
 
             commentAdapter = new CommentAdapter(tour.getListFeedBack());
             rvTourCmt.setAdapter(commentAdapter);
             LinearLayoutManager layoutManager1 = new LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false);
             rvTourCmt.setLayoutManager(layoutManager1);
             lbTourCmt.setText("Bình Luận ("+tour.getListFeedBack().size()+")");
-
-
-        btnTourSave.setOnClickListener(new View.OnClickListener() {
+            btnTourSave.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 CMT();
@@ -129,15 +143,15 @@ public class Tour extends AppCompatActivity {
         lbTourGia = (TextView)findViewById(R.id.lbTourGia);
         lbTourTGDen = (TextView)findViewById(R.id.lbTourTGDen);
         lbTourTGTu = (TextView)findViewById(R.id.lbTourTGTu);
-       // expanlistLichTrinh = (ExpandableListView)findViewById(R.id.expanlistLichTrinh);
         flipTour = (FlipperLayout)findViewById(R.id.flipTour);
-        lbTourNoiDung = (TextView)findViewById(R.id.lbTourNoiDung);
-        rvListChiTietTour = (RecyclerView) findViewById(R.id.rvListChiTietTour);
         lbTourSoLuongConLai = (TextView)findViewById(R.id.lbTourSoLuongConLai);
         rvTourCmt = (RecyclerView)findViewById(R.id.rvTourCmt);
         txtTourCmt = (EditText)findViewById(R.id.txtTourCmt);
         btnTourSave = (Button)findViewById(R.id.btnTourSave);
         lbTourCmt = (TextView)findViewById(R.id.lbTourCmt);
+        lbTourLink = (TextView)findViewById(R.id.lbTourLink);
+        lbTourThoiGian = (TextView)findViewById(R.id.lbTourThoiGian);
+
     }
 
     @Override
@@ -145,6 +159,7 @@ public class Tour extends AppCompatActivity {
         if (tour.getNguoiTao().equals(user.getEmail())) {
             getMenuInflater().inflate(R.menu.menu_update, menu);
         }
+        getMenuInflater().inflate(R.menu.menu_home, menu);
         return super.onCreateOptionsMenu(menu);
     }
 
@@ -161,6 +176,11 @@ public class Tour extends AppCompatActivity {
 
         if(item.getItemId()==android.R.id.home)
             onBackPressed();
+        if(item.getItemId()==R.id.MenuHome)
+        {
+            Intent it = new Intent(Tour.this, MainActivity.class);
+            startActivity(it);
+        }
         return super.onOptionsItemSelected(item);
     }
 
@@ -179,18 +199,17 @@ public class Tour extends AppCompatActivity {
                 flipTour.addFlipperView(view);
             }
         }
-        lbTourTGTu.setText("Thời gian từ: "+tour.getThoiGianTu());
-        lbTourTGDen.setText("Đến: "+tour.getThơiGianDen());
-        lbTourGia.setText("Giá: "+tour.getGia());
-        lbTourMaTour.setText("Mã tour: "+tour.getMaTour());
+        lbTourTGTu.setText(tour.getThoiGianTu());
+        lbTourTGDen.setText(tour.getThoiGianDen());
+        lbTourGia.setText(tour.getGia());
+        lbTourMaTour.setText(tour.getMaTour());
         lbTourFace.setText(tour.getFaceBook());
         lbTourEmail.setText(tour.getEmail());
         lbTourPhone.setText(tour.getPhone());
-        lbTourDiaDiemDen.setText("Danh sách địa điểm: "+tour.getDsDiaDiem());
-        lbKhoiHanhTai.setText("Địa điểm khởi hành: "+tour.getDiaDiemKhoiHanh());
-        lbTourNoiDung.setText(tour.getNoiDung());
-        lbTourSoLuongConLai.setText("Số lượng trống: "+tour.getSoLuongCon());
-
-
+        lbTourDiaDiemDen.setText(tour.getDsDiaDiem());
+        lbKhoiHanhTai.setText(tour.getDiaDiemKhoiHanh());
+        lbTourThoiGian.setText(tour.getthoiGian());
+        lbTourSoLuongConLai.setText(tour.getSoLuongCon());
+        lbTourLink.setText(tour.getLink());
     }
 }

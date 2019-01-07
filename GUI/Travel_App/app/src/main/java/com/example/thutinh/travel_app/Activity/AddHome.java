@@ -1,8 +1,7 @@
-package com.example.thutinh.travel_app;
+package com.example.thutinh.travel_app.Activity;
 
 import android.content.Intent;
 import android.graphics.Bitmap;
-import android.graphics.BitmapFactory;
 import android.net.Uri;
 import android.provider.MediaStore;
 import android.support.annotation.NonNull;
@@ -17,15 +16,15 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.ImageView;
 import android.widget.Toast;
 
 import com.bumptech.glide.Glide;
-import com.bumptech.glide.RequestBuilder;
 import com.bumptech.glide.request.target.SimpleTarget;
 import com.bumptech.glide.request.transition.Transition;
 import com.example.thutinh.travel_app.Adapter.ThemAnhAdapter;
 import com.example.thutinh.travel_app.DTO.Home;
+import com.example.thutinh.travel_app.MainActivity;
+import com.example.thutinh.travel_app.R;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
@@ -37,11 +36,7 @@ import com.google.firebase.storage.StorageReference;
 import com.google.firebase.storage.UploadTask;
 
 import java.io.ByteArrayOutputStream;
-import java.io.File;
 import java.io.IOException;
-import java.io.InputStream;
-import java.net.HttpURLConnection;
-import java.net.URL;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -54,6 +49,10 @@ public class AddHome extends AppCompatActivity {
     private EditText txtHomeEmail;
     private EditText txtHomeViTri;
     private EditText txtHomeNoiDung;
+    private  EditText txtHomeGiaPhong;
+    private  EditText txtHomeThongTinChiTietPhongO;
+    private EditText txtHomeTienIch;
+    private EditText txtHomeLink;
     private Button btnHomeChooseAPicture;
     private int request_codeFile = 1;
     private EditText txtHomeName;
@@ -104,6 +103,10 @@ public class AddHome extends AppCompatActivity {
             txtHomeNoiDung.setText(item.getNoiDung());
             txtHomeFace.setText(item.getFace());
            txtHomeEmail.setText(item.getEmail());
+           txtHomeTienIch.setText(item.getTienIch());
+           txtHomeThongTinChiTietPhongO.setText(item.getChiTietPhongO());
+           txtHomeGiaPhong.setText(item.getGia());
+           txtHomeLink.setText(item.getLink());
            for(int i = 0; i<item.getArrHinh().size(); i++)
            {
             try
@@ -124,7 +127,6 @@ public class AddHome extends AppCompatActivity {
             {
                 Toast.makeText(this, "Lỗi", Toast.LENGTH_SHORT).show();
             }
-
            }
         }
         themAnhAdapter = new ThemAnhAdapter(listHinh, item.arrHinh);
@@ -137,13 +139,11 @@ public class AddHome extends AppCompatActivity {
     @Override
     protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
         if (requestCode == request_codeFile && resultCode == RESULT_OK && data != null) {
-
             Uri uri = data.getData();
             try {
                 Bitmap bt = MediaStore.Images.Media.getBitmap(getContentResolver(), uri);
                 listHinh.add(bt);
                 LoadImg(bt);
-
 
             } catch (IOException e) {
                 Log.d("166", e.toString());
@@ -190,6 +190,7 @@ public class AddHome extends AppCompatActivity {
               // Toast.makeText(AddHome.this, "link "+ item.arrHinh.get(0), Toast.LENGTH_SHORT).show();
             }
         });
+
     }
 
     public void AnhXa() {
@@ -204,11 +205,17 @@ public class AddHome extends AppCompatActivity {
         txtHomeNoiDung = (EditText) findViewById(R.id.txtHomeMoTa);
         txtHomeViTri = (EditText) findViewById(R.id.txtHomeViTri);
         txtHomePhone = (EditText) findViewById(R.id.txtHomePhone);
+        txtHomeGiaPhong = (EditText)findViewById(R.id.txtHomeGiaPhong);
+        txtHomeLink = (EditText)findViewById(R.id.txtHomeLink);
+        txtHomeTienIch = (EditText)findViewById(R.id.txtHomeTienIch);
+        txtHomeThongTinChiTietPhongO = (EditText)findViewById(R.id.txtHomeThongTinChiTietPhongO);
     }
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         getMenuInflater().inflate(R.menu.menu_add_thong_tin, menu);
+        getMenuInflater().inflate(R.menu.menu_home, menu);
+
         return super.onCreateOptionsMenu(menu);
     }
 
@@ -216,8 +223,6 @@ public class AddHome extends AppCompatActivity {
     public boolean onOptionsItemSelected(MenuItem item) {
         if(item.getItemId() ==R.id.save)
         {
-
-
             Luu();
         }
         if(item.getItemId()==android.R.id.home) {
@@ -225,6 +230,11 @@ public class AddHome extends AppCompatActivity {
 //            it.putExtras(bRevieve);
 //            startActivity(it);
             onBackPressed();
+        }
+        if(item.getItemId()==R.id.MenuHome)
+        {
+            Intent it = new Intent(AddHome.this, MainActivity.class);
+            startActivity(it);
         }
 
         return super.onOptionsItemSelected(item);
@@ -239,14 +249,23 @@ public class AddHome extends AppCompatActivity {
             String phone = "";
             String face = "";
             String noiDung = "";
+            String gia = "";
+            String link = "";
+            String tienIch = "";
+            String chiTietPhngO = "";
             tenDiaDiem = txtHomeViTri.getText().toString().trim();
             homName = txtHomeName.getText().toString().trim();
             email = txtHomeEmail.getText().toString().trim();
             phone = txtHomePhone.getText().toString().trim();
             face = txtHomeFace.getText().toString().trim();
             noiDung = txtHomeNoiDung.getText().toString().trim();
+            gia = txtHomeGiaPhong.getText().toString().trim();
+            link = txtHomeLink.getText().toString().trim();
+            tienIch = txtHomeTienIch.getText().toString().trim();
+            chiTietPhngO = txtHomeThongTinChiTietPhongO.getText().toString().trim();
 
-            if (tenDiaDiem.length() == 0 || homName.length() == 0 || email.length() == 0 || phone.length() == 0 || noiDung.length() == 0) {
+
+            if (tenDiaDiem.length() == 0 || homName.length() == 0 || email.length() == 0 || phone.length() == 0 || noiDung.length() == 0|| gia.length()==0||tienIch.length()==0|| chiTietPhngO.length()==0) {
                 Toast.makeText(AddHome.this, "Bạn chưa cung cấp đầy đủ thông tin", Toast.LENGTH_SHORT).show();
             } else {
                 item.arrHinh = new ArrayList<>();
@@ -258,6 +277,10 @@ public class AddHome extends AppCompatActivity {
                     item.setNoiDung(noiDung);
                     item.setPhone(phone);
                     item.setEmailNguoiTao(mAuth.getCurrentUser().getEmail());
+                    item.setGia(gia);
+                    item.setChiTietPhongO(chiTietPhngO);
+                    item.setLink(link);
+                    item.setTienIch(tienIch);
 
 
                   //  Toast.makeText(this, "Số hình trong mảng là "+ listHinh.size()+ "Sô shinhf trng list arr là "+ item.arrHinh.size(),Toast.LENGTH_LONG).show();

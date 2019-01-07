@@ -11,6 +11,12 @@ public class MoTaChiTiet_class implements Serializable{
 
     private String tenDiaDanh;
     private String viTri;
+    private String moTa;
+    public List<String> dsYeuThich = new ArrayList<String>();
+    public long soLuotThich = dsYeuThich.size();
+    private String key = "";
+    public List<Comment_class> listCmt = new ArrayList<Comment_class>();
+    public   List<String> arrHinh = new ArrayList<String>();
 
     public ArrayList<String> getListEdit() {
         return listEdit;
@@ -30,12 +36,6 @@ public class MoTaChiTiet_class implements Serializable{
         this.viTri = viTri;
     }
 
-    private String moTa;
-    public List<String> dsYeuThich = new ArrayList<String>();
-    public long soLuotThich = dsYeuThich.size();
-    private String key = "";
-    public List<Comment_class> listCmt = new ArrayList<Comment_class>();
-    public   List<String> arrHinh = new ArrayList<String>();
     public MoTaChiTiet_class() {
 
     }

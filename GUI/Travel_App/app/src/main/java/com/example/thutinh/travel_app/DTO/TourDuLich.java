@@ -8,15 +8,24 @@ public class TourDuLich implements Serializable{
     String phone;
     String email;
     String faceBook;
-    String noiDung;
+    String thoiGian;
     String thoiGianTu;
-    String thơiGianDen;
+    String thoiGianDen;
     String diaDiemKhoiHanh;
     String MaTour;
     String dsDiaDiem;
     String soLuongCon;
     String gia;
     String key;
+    String link;
+
+    public String getLink() {
+        return link;
+    }
+
+    public void setLink(String link) {
+        this.link = link;
+    }
 
     public List<Comment_class> getListFeedBack() {
         return listFeedBack;
@@ -46,33 +55,26 @@ public class TourDuLich implements Serializable{
         this.key = key;
     }
 
-    public List<ChiTietTour> getListChiTietTour() {
-        return listChiTietTour;
-    }
 
-    public void setListChiTietTour(List<ChiTietTour> listChiTietTour) {
-        this.listChiTietTour = listChiTietTour;
-    }
-
-  public   List<ChiTietTour>listChiTietTour = new ArrayList<>();
    public   List<String>arrHinh = new ArrayList<>();
-    public TourDuLich(String phone, String email, String faceBook, String noiDung, String thoiGianTu, String thơiGianDen, String diaDiemKhoiHanh, String maTour, String dsDiaDiem, String soLuongCon, String gia, List<String> arrHinh, List<ChiTietTour>chiTieTour,String key, String nguoiTao, List<Comment_class> list) {
+    public TourDuLich(String phone, String email, String faceBook, String thoiGian, String thoiGianTu, String thoiGianDen, String diaDiemKhoiHanh, String maTour, String dsDiaDiem, String soLuongCon, String gia, List<String> arrHinh,String key, String nguoiTao, List<Comment_class> list, String link) {
         this.phone = phone;
         this.email = email;
         this.faceBook = faceBook;
-        this.noiDung = noiDung;
+        this.thoiGian = thoiGian;
         this.thoiGianTu = thoiGianTu;
-        this.thơiGianDen = thơiGianDen;
+        this.thoiGianDen = thoiGianDen;
         this.diaDiemKhoiHanh = diaDiemKhoiHanh;
         MaTour = maTour;
         this.dsDiaDiem = dsDiaDiem;
         this.soLuongCon = soLuongCon;
         this.gia = gia;
         this.arrHinh = arrHinh;
-        this.listChiTietTour = chiTieTour;
+
         this.key = key;
         this.nguoiTao = nguoiTao;
         this.listFeedBack = list;
+        this.link = link;
     }
 
     public TourDuLich() {
@@ -102,12 +104,12 @@ public class TourDuLich implements Serializable{
         this.faceBook = faceBook;
     }
 
-    public String getNoiDung() {
-        return noiDung;
+    public String getthoiGian() {
+        return thoiGian;
     }
 
-    public void setNoiDung(String noiDung) {
-        this.noiDung = noiDung;
+    public void setthoiGian(String thoiGian) {
+        this.thoiGian = thoiGian;
     }
 
     public String getThoiGianTu() {
@@ -118,12 +120,12 @@ public class TourDuLich implements Serializable{
         this.thoiGianTu = thoiGianTu;
     }
 
-    public String getThơiGianDen() {
-        return thơiGianDen;
+    public String getThoiGianDen() {
+        return thoiGianDen;
     }
 
-    public void setThơiGianDen(String thơiGianDen) {
-        this.thơiGianDen = thơiGianDen;
+    public void setThoiGianDen(String thoiGianDen) {
+        this.thoiGianDen = thoiGianDen;
     }
 
     public String getDiaDiemKhoiHanh() {

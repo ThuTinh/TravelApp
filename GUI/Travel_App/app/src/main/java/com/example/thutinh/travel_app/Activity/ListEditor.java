@@ -1,15 +1,15 @@
-package com.example.thutinh.travel_app;
+package com.example.thutinh.travel_app.Activity;
 
-import android.database.DataSetObserver;
+import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.view.Menu;
 import android.view.MenuItem;
-import android.view.View;
-import android.view.ViewGroup;
-import android.widget.Adapter;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
-import android.widget.Toolbar;
+
+import com.example.thutinh.travel_app.MainActivity;
+import com.example.thutinh.travel_app.R;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -38,9 +38,20 @@ public class ListEditor extends AppCompatActivity {
     }
 
     @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(R.menu.menu_home, menu);
+        return super.onCreateOptionsMenu(menu);
+    }
+
+    @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         if(item.getItemId()==android.R.id.home)
             onBackPressed();
+        if(item.getItemId()==R.id.MenuHome)
+        {
+            Intent it = new Intent(ListEditor.this, MainActivity.class);
+            startActivity(it);
+        }
         return super.onOptionsItemSelected(item);
     }
 }

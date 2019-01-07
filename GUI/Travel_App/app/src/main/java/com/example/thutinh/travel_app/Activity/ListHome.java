@@ -1,4 +1,4 @@
-package com.example.thutinh.travel_app;
+package com.example.thutinh.travel_app.Activity;
 
 import android.content.Intent;
 import android.support.annotation.NonNull;
@@ -7,15 +7,14 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
-import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
-import android.widget.ImageView;
 import android.widget.Toast;
 
 import com.example.thutinh.travel_app.Adapter.HomeAdapter;
 import com.example.thutinh.travel_app.DTO.Home;
-import com.example.thutinh.travel_app.DTO.MoTaChiTiet_class;
+import com.example.thutinh.travel_app.MainActivity;
+import com.example.thutinh.travel_app.R;
 import com.google.firebase.database.ChildEventListener;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
@@ -66,6 +65,7 @@ String LoaiDichVu;
     public boolean onCreateOptionsMenu(Menu menu) {
         getMenuInflater().inflate(R.menu.search, menu);
         getMenuInflater().inflate(R.menu.create_back,menu);
+        getMenuInflater().inflate(R.menu.menu_home, menu);
         android.support.v7.widget.SearchView searchView =(android.support.v7.widget.SearchView) menu.findItem(R.id.seachTinh).getActionView();
         searchView.setOnQueryTextListener(new android.support.v7.widget.SearchView.OnQueryTextListener() {
             @Override
@@ -97,6 +97,9 @@ String LoaiDichVu;
               it.putExtras(bSend);
                 startActivity(it);
                 return  true;
+            case  R.id.MenuHome:
+                Intent it1 = new Intent(ListHome.this, MainActivity.class);
+                startActivity(it1);
             default:break;
         }
 
